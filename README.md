@@ -60,18 +60,20 @@ FastAPI automatically generates interactive Swagger documentation. Once the serv
 
 Here, you can visually test both the `/predict/sarima` and `/predict/svm` endpoints right from your browser!
 
-## 📊 Streamlit Frontend Deployment (Upcoming/Integration)
+## 📊 Streamlit Interactive Dashboard
 
-This FastAPI backend is designed to be completely decoupled from the frontend. To build your Streamlit dashboard:
-1. Create an `app.py` Streamlit script.
-2. Use Python's `requests` library to send user inputs from Streamlit to the FastAPI endpoints (`http://127.0.0.1:8000/predict/...`).
-3. Display the returned JSON predictions dynamically in your dashboard.
+A standalone Streamlit application is available to visually interact with the models. It loads the `.pkl` models directly for a simple, monolithic deployment without needing the API running.
 
-Alternatively, Streamlit can load the `.pkl` models directly without the API layer for a monolithic deployment.
+To launch the dashboard:
+```bash
+streamlit run app.py
+```
+This will open a browser window at `http://localhost:8501`.
 
 ## 📂 Project Structure
 ```text
 SACAIM25_Project/
+├── app.py                   # Streamlit dashboard application
 ├── api.py                   # FastAPI application script
 ├── test_api.py              # Local testing script for the API
 ├── sarima_model.pkl         # Trained SARIMA forecasting model
