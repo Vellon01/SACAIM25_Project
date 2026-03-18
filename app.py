@@ -30,21 +30,59 @@ def load_models():
 
 sarima_model, svm_model = load_models()
 
+# --- Custom CSS ---
+st.markdown("""
+<style>
+    .reportview-container {
+        background: #f0f2f6;
+    }
+    .main {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3 {
+        color: #1f2937;
+    }
+    .stButton>button {
+        width: 100%;
+        border-radius: 5px;
+        background-color: #2563eb;
+        color: white;
+        font-weight: bold;
+    }
+    .stButton>button:hover {
+        background-color: #1d4ed8;
+    }
+    .metric-card {
+        background-color: #f8fafc;
+        border-left: 4px solid #3b82f6;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # --- Main App ---
-st.title("🪙 Gold Price Forecasting & Prediction")
-st.markdown("Use machine learning models to forecast future gold prices or predict the price based on recent historic data.")
+st.title("Gold Price Forecasting & Prediction Dashboard")
+st.markdown("Leverage advanced AI models to analyze trends and forecast future gold prices.")
+st.divider()
 
 with st.sidebar:
-    st.header("Settings")
+    st.image("https://cdn-icons-png.flaticon.com/512/2933/2933116.png", width=100)
+    st.header("Dashboard Controls")
     model_choice = st.radio(
-        "Choose a Model:",
-        ("SARIMA (Time Series Forecast)", "SVM (Price Prediction)")
+        "Select AI Model:",
+        ("SARIMA (Long-term Forecast)", "SVM (Next Month Prediction)")
     )
-    st.info("ℹ️ **SARIMA** is best for forecasting future trends based on historical sequences.\n\nℹ️ **SVM** is used here to predict the next month's price given the previous 6 months' prices.")
+    st.divider()
+    st.info("**SARIMA** is optimal for forecasting multi-period future trends based on historical sequences.\n\nℹ️ **SVM** leverages recent market data to pinpoint the next month's immediate price.")
 
-if model_choice == "SARIMA (Time Series Forecast)":
-    st.header("📈 SARIMA Forecasting")
-    st.markdown("Forecast gold prices into the future based on historical trends.")
+if model_choice == "SARIMA (Long-term Forecast)":
+    st.header("Time Series Forecasting with SARIMA")
+    st.markdown("Project gold prices into the future using Statistical Autoregressive Integrated Moving Averages.")
     
     if sarima_model is not None:
         n_periods = st.slider("Number of months to forecast:", min_value=1, max_value=60, value=12)
@@ -65,14 +103,36 @@ if model_choice == "SARIMA (Time Series Forecast)":
                     col1, col2 = st.columns([2, 1])
                     
                     with col1:
-                        # Create a quick plot
-                        fig, ax = plt.subplots(figsize=(10, 5))
-                        ax.plot(range(1, n_periods + 1), forecast_values, marker='o', linestyle='-', color='b', label='Forecasted Price')
-                        ax.set_title(f"Gold Price Forecast for Next {n_periods} Months")
-                        ax.set_xlabel("Months into the Future")
-                        ax.set_ylabel("Predicted Price (USD)")
-                        ax.grid(True)
-                        ax.legend()
+                    # Create a styled plot
+                        fig, ax = plt.subplots(figsize=(12, 6))
+                        
+                        # Plot styling
+                        ax.set_facecolor('#f8fafc')
+                        fig.patch.set_facecolor('white')
+                        
+                        # Data plotting
+                        ax.plot(range(1, n_periods + 1), forecast_values, 
+                                marker='o', markersize=6, linewidth=2.5, 
+                                color='#2563eb', label='AI Forecast')
+                                
+                        # Fill area under curve
+                        ax.fill_between(range(1, n_periods + 1), forecast_values, 
+                                      alpha=0.1, color='#2563eb')
+                        
+                        # Labels and title
+                        ax.set_title(f"Gold Price Trajectory: Next {n_periods} Months", 
+                                   fontsize=16, fontweight='bold', pad=20, color='#1f2937')
+                        ax.set_xlabel("Months Ahead", fontsize=12, fontweight='500', labelpad=10)
+                        ax.set_ylabel("Predicted Price (USD/oz)", fontsize=12, fontweight='500', labelpad=10)
+                        
+                        # Grid and Spines
+                        ax.grid(True, linestyle='--', alpha=0.7, color='#cbd5e1')
+                        ax.spines['top'].set_visible(False)
+                        ax.spines['right'].set_visible(False)
+                        ax.spines['left'].set_color('#94a3b8')
+                        ax.spines['bottom'].set_color('#94a3b8')
+                        
+                        ax.legend(loc='upper right', frameon=True, shadow=True)
                         st.pyplot(fig)
                     
                     with col2:
@@ -89,8 +149,8 @@ if model_choice == "SARIMA (Time Series Forecast)":
         st.warning("SARIMA model is not loaded properly. Please ensure 'sarima_model.pkl' is in the project directory.")
 
 else:
-    st.header("🎯 SVM Price Prediction")
-    st.markdown("Predict the next month's gold price based on the prices of the last 6 months.")
+    st.header("🎯 Immediate Price Prediction with SVM")
+    st.markdown("Utilize Support Vector Machines to predict the immediate upcoming month's gold price based on recent market conditions.")
     
     if svm_model is not None:
         st.subheader("Enter the average gold price for the past 6 months:")
@@ -114,17 +174,44 @@ else:
                     features_array = np.array([features])
                     prediction = svm_model.predict(features_array)[0]
                     
-                    st.success(f"The predicted gold price for the next month is: **${prediction:,.2f}**")
+                    # Display large metric card
+                    st.markdown(f"""
+                        <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 20px; text-align: center; margin: 20px 0;">
+                            <h2 style="color: #166534; margin: 0;">Predicted Next Month Price</h2>
+                            <h1 style="color: #15803d; font-size: 3rem; margin: 10px 0;">${prediction:,.2f}</h1>
+                            <p style="color: #166534; margin: 0;">Based on SVM Linear Kernel Analysis</p>
+                        </div>
+                    """, unsafe_allow_html=True)
                     
-                    st.subheader("Trend Visualization")
-                    fig, ax = plt.subplots(figsize=(8, 4))
-                    ax.plot(range(-6, 0), features, marker='o', color='gray', label='Past 6 Months')
-                    ax.plot([0], [prediction], marker='*', color='gold', markersize=15, label='Next Month Prediction')
+                    st.subheader("Price Trend Analysis")
+                    fig, ax = plt.subplots(figsize=(10, 5))
+                    
+                    # Plot styling
+                    ax.set_facecolor('#f8fafc')
+                    fig.patch.set_facecolor('white')
+                    
+                    # Data plotting
+                    ax.plot(range(-6, 0), features, marker='o', markersize=8, 
+                            linewidth=2.5, color='#64748b', label='Historical Data (6 Months)')
+                    ax.plot([0], [prediction], marker='*', color='#eab308', 
+                            markersize=20, markeredgecolor='black', markeredgewidth=1, 
+                            label='AI Prediction')
+                            
+                    # Add dashed line connecting last point to prediction
+                    ax.plot([-1, 0], [features[-1], prediction], linestyle='--', color='#94a3b8')
                     ax.set_xticks(range(-6, 1))
-                    ax.set_xticklabels(['t-6', 't-5', 't-4', 't-3', 't-2', 't-1', 'Prediction'])
-                    ax.set_ylabel("Price (USD)")
-                    ax.grid(True, linestyle='--', alpha=0.6)
-                    ax.legend()
+                    ax.set_xticklabels(['t-6', 't-5', 't-4', 't-3', 't-2', 't-1', 'Target Month'], 
+                                     fontweight='bold')
+                    ax.set_ylabel("Price (USD/oz)", fontsize=12, fontweight='500', labelpad=10)
+                    
+                    # Grid and Spines
+                    ax.grid(True, linestyle='--', alpha=0.7, color='#cbd5e1')
+                    ax.spines['top'].set_visible(False)
+                    ax.spines['right'].set_visible(False)
+                    ax.spines['left'].set_color('#94a3b8')
+                    ax.spines['bottom'].set_color('#94a3b8')
+                    
+                    ax.legend(loc='best', frameon=True, shadow=True, fontsize=11)
                     st.pyplot(fig)
                     
                 except Exception as e:
