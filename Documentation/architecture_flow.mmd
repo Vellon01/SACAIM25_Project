@@ -1,0 +1,30 @@
+graph TD
+    User(["End User"])
+    Client(["API Client / Web App / Postman"])
+    
+    subgraph Streamlit_Application ["Streamlit Application"]
+        App["app.py<br>Streamlit Dashboard"]
+    end
+    
+    subgraph FastAPI_Application ["FastAPI Application"]
+        API["api.py<br>FastAPI Server"]
+        EpSarima["/predict/sarima"]
+        EpSvm["/predict/svm"]
+        
+        API --> EpSarima
+        API --> EpSvm
+    end
+    
+    subgraph Machine_Learning_Models ["Machine Learning Models"]
+        Model1[("sarima_model.pkl")]
+        Model2[("svm_linear_model.pkl")]
+    end
+    
+    User -->|Interacts with UI| App
+    Client -->|HTTP POST requests| API
+    
+    App -->|Deserializes & Predicts| Model1
+    App -->|Deserializes & Predicts| Model2
+    
+    EpSarima -->|Deserializes & Predicts| Model1
+    EpSvm -->|Deserializes & Predicts| Model2

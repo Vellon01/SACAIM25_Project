@@ -2,7 +2,7 @@
 
 This project leverages machine learning to forecast and track gold prices using two distinct modeling approaches: **SARIMA** (Seasonal Autoregressive Integrated Moving Average) and **SVR** (Support Vector Regression, specifically a linear model).
 
-The project is structured with a robust **FastAPI backend** for serving model predictions, making it flexible for integration with frontend dashboards such as **Streamlit**.
+The project is structured with a robust **FastAPI backend** for serving model predictions, paired with an interactive **Streamlit dashboard** for visualizing forecasts and market indicators. Recent updates include comprehensive documentation generation, automated UI/API screenshot capture, and architectural flowcharts.
 
 ## 🧠 Models Overview
 
@@ -64,23 +64,38 @@ Here, you can visually test both the `/predict/sarima` and `/predict/svm` endpoi
 
 A standalone Streamlit application is available to visually interact with the models. It loads the `.pkl` models directly for a simple, monolithic deployment without needing the API running.
 
+🌐 **Live Demo:** [https://goldpriceprediction0.streamlit.app/](https://goldpriceprediction0.streamlit.app/)
+
 To launch the dashboard:
 ```bash
 streamlit run app.py
 ```
 This will open a browser window at `http://localhost:8501`.
 
+## 📚 Documentation & Architecture
+
+The `Documentation/` directory contains in-depth reports, diagrams, and automation scripts to maintain project documentation:
+- **Mermaid Flowcharts**: Visualizing system architecture (`architecture_flow.mmd`), data pipelines (`data_pipeline.mmd`), and user flows (`user_flow.mmd`).
+- **Word Documents**: Automatically generated, structured `.docx` files detailing domain knowledge and system design.
+- **Automation Scripts**: Python automation (`build_docs*.py`, `take_screenshots.py`, `export_flowcharts.py`, etc.) automatically captures UI/API screenshots and compiles the final documentation layout.
+
 ## 📂 Project Structure
 ```text
 SACAIM25_Project/
-├── app.py                   # Streamlit dashboard application
-├── api.py                   # FastAPI application script
-├── test_api.py              # Local testing script for the API
-├── sarima_model.pkl         # Trained SARIMA forecasting model
-├── svm_linear_model.pkl     # Trained Support Vector prediction model
-├── requirements.txt         # Project dependencies
-├── research.ipynb           # Model exploration and training notebook
-└── README.md                # This file
+├── api.py                      # FastAPI application script
+├── app.py                      # Streamlit dashboard application
+├── test_api.py                 # Local testing script for the API
+├── sarima_model.pkl            # Trained SARIMA forecasting model
+├── svm_linear_model.pkl        # Trained Support Vector prediction model
+├── requirements.txt            # Project dependencies
+├── research.ipynb              # Model exploration and training notebook
+├── Documentation/              # Architecture diagrams, Word docs, and Generation Scripts
+│   ├── build_docs_v2.py        # Docx generation pipeline
+│   ├── export_flowcharts.py    # Generates PNGs from Mermaid files
+│   ├── take_dark_screenshots.py # Automates UI screenshot capture
+│   └── ...                     # System diagrams (.mmd, .png) & textual docs
+├── take_swagger_screenshot.py  # Script for capturing Swagger UI snapshot
+└── README.md                   # This file
 ```
 
 ## 📝 License

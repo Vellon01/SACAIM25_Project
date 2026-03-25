@@ -1,0 +1,12 @@
+flowchart TD
+    Start([Open Streamlit Dashboard]) --> Sidebar{Select AI Model<br>from Sidebar}
+    
+    Sidebar -->|Option 1: SARIMA| S_Input[Slider: Select Forecast Horizon<br>1 to 60 Months]
+    S_Input --> S_Btn[Click 'Generate Forecast' Button]
+    S_Btn --> S_Process[System: Run SARIMA Prediction]
+    S_Process --> S_Display[UI Update:<br>Line Chart Trajectory & Data Table]
+    
+    Sidebar -->|Option 2: SVM| SVM_Input[Input Fields: Enter 6<br>Past Monthly Prices]
+    SVM_Input --> SVM_Btn[Click 'Predict Next Month' Button]
+    SVM_Btn --> SVM_Process[System: Calculate SVM Prediction]
+    SVM_Process --> SVM_Display[UI Update:<br>Large Metric Card & Trend Chart]

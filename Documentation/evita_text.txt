@@ -1,0 +1,1924 @@
+ 
+ 
+ 
+PREDICTING DENGUE FEVER PROGRESSION: PREDICTIVE ANALYTICS FOR 
+PLATELET COUNT             
+ 
+Submitted by 
+Evita Sherry D’Costa 
+232107 
+MSc. Data Science 
+Aloysius Institute of Management & Information Technology (AIMIT) 
+St Aloysius College (Autonomous) 
+Mangalore, Karnataka 
+ 
+ 
+ 
+Submitted in Partial Fulfillment of the Requirements for the Award of the Degree of 
+Master of Data Science 
+ 
+ 
+ 
+Under the guidance of  
+ 
+Dr. Jeevan L J Pinto            Dr Ruban S 
+Associate Professor (Department     Associate Professor & HOD  
+of MCA)            (Department of MSc. – Software Technology) 
+Aloysius Institute of Management and     Aloysius Institute of Management and 
+   Information Technology (AIMIT)                  Information Technology (AIMIT) 
+  St Aloysius College (Autonomous)       St Aloysius College (Autonomous) 
+       Mangalore         Mangalore 
+     
+ 
+Submitted to 
+ 
+ 
+ 
+ 
+ 
+ 
+ALOYSIUS INSTITUTE OF MANAGEMENT AND INFORMATION TECHNOLOGY 
+(AIMIT) 
+ST ALOYSIUS COLLEGE (AUTONOMOUS) 
+MANGALURU, KARNATAKA 
+ 
+ 
+2025 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ALOYSIUS INSTITUTE OF MANAGEMNT AND INFORMATION TECHNOLOGY  
+ST ALOYSIUS COLLEGE (AUTONOMOUS) 
+MANGALORE, KARNATAKA 
+ 
+ 
+CERTIFICATE 
+ 
+This is to certify that the project titled  
+Predicting Dengue Fever Progression: Predictive Analytics for Platelet Count                         
+Submitted by 
+Evita Sherry D’Costa 
+232107 
+MSc. Data Science 
+Aloysius Institute of Management & Information Technology (AIMIT) 
+St Aloysius College (Autonomous) 
+Mangalore, Karnataka 
+In partial fulfillment of the requirements for award of degree of Master of Data Science of 
+Mangalore University, is a bonafide record of the work carried out at 
+ 
+Aloysius Institute of Management and Information Technology (AIMIT) 
+St Aloysius College (Autonomous) 
+Mangalore 
+Durin the year 
+2025 
+ 
+ 
+Dr. Jeevan L J Pinto 
+Associate Professor  
+(Department of MCA), 
+AIMIT, St. Aloysius College  
+(Autonomous),  
+Mangaluru-575 022. 
+ 
+ 
+ 
+Dr (Fr) Kiran Cotha SJ 
+Director,  
+AIMIT, St. Aloysius College  
+(Autonomous) 
+Mangaluru-575 022. 
+ 
+ 
+ 
+Dr Hemalatha N  
+Dean, School of IT 
+PG Depts. of Information Technology,  
+AIMIT, St. Aloysius College 
+(Autonomous),  
+Mangaluru-575 022. 
+ 
+ 
+Examiners 
+1. 
+ 
+ 
+ 
+2. 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+CERTIFICATE OF AUTHENTICATED WORK 
+ 
+This is to certify that the project report entitled Predicting Dengue Fever Progression: Predictive 
+Analytics for Platelet Count  submitted to Aloysius Institute of Management and Information 
+Technology (AIMIT), St Aloysius College  (Autonomous), Mangalore affiliated to Mangalore 
+University in partial fulfilment of the requirement for the award of the degree of MASTER OF 
+DATA SCIENCE is an o riginal work carried out by Ms. Evita Sherry D’Costa  Register no. 
+232107 under my guidance. The matter embodied in this project is authentic and is genuine 
+work done by the student and has not been submitted whether to this University, or to any other 
+University / Institute for the fulfilment of the requirement of any course of study. 
+ 
+------------------------------ 
+Signature of the Student: 
+Date:    
+Name and Address of the student 
+     
+     
+     
+ 
+Register Number:     
+ 
+------------------------------ 
+Signature of the Guide: 
+Date:    
+Name, Designation and Address of the Guide 
+     
+     
+     
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Project Proposal Report / Synopsis  
+for 
+Predicting Dengue Fever Progression: Predictive Analytics for Platelet Count 
+ 
+ 
+Evita Sherry D’Costa 
+232107 
+MSc. Data Science 
+Aloysius Institute of Management and Information Technology  
+St Aloysius College (Autonomous) 
+Beeri, Mangalore – 575 022 
+ 
+ 
+ 
+ 
+Under the guidance of  
+Dr. Jeevan L J Pinto 
+Associate Professor (Department of MCA) 
+Aloysius Institute of Management and Information Technology (AIMIT) 
+St Aloysius College (Autonomous) 
+Beeri, Kotekar, Mangaluru - 575022 
+ 
+ 
+Submitted to 
+ 
+ 
+ 
+ 
+ 
+ALOYSIUS INSTITUTE OF MANAGEMENT AND INFORMATION TECHNOLOGY 
+(AIMIT) 
+ST ALOYSIUS COLLEGE (AUTONOMOUS) 
+MANGALORE, KARNATAKA 
+ 
+
+ 
+ 
+ 
+TABLE OF CONTENTS 
+Acknowledgement 1 
+List of figures 2 
+List of tables 3 
+Abbreviations  4 
+1.  Introduction ……………………………………............. 5 
+ 1.1 Overview / Background ……………………………………............. 5 
+ 1.2 Problem statement ……………………………………............. 6 
+ 1.3 Project Objectives ……………………………………............. 7 
+ 1.4 Organization details ……………………………………............. 8 
+2.  Literature Review ……………………………………............. 9 
+ 2.1 Introduction ……………………………………............. 9 
+ 2.2 Details of literature review ……………………………………............. 9 
+ 2.3 Models / Algorithms used  ……………………………………............. 12 
+ 2.4 Conclusions  - Gaps 
+Identified 
+……………………………………............. 19 
+3.  Methodology ……………………………………............. 22 
+ 3.1 Introduction ……………………………………............. 22 
+ 3.2 Data Sources & Format ……………………………………............. 22 
+ 3.3 Data Preprocessing – 
+Extraction & preparation  
+……………………………………............. 23 
+ 3.4 Data Exploration & analysis ……………………………………............. 24 
+ 
+ 
+ 
+ 3.5 Process description ……………………………………............. 35 
+ 3.6 Workflow diagram ……………………………………............. 39 
+ 3.7 Hardware & Software 
+requirements 
+……………………………………............. 39 
+4.  Model details and 
+Implementation 
+……………………………………............. 43 
+ 4.1 Model building  ……………………………………............. 43 
+ 4.2 Data inputs ……………………………………............. 46 
+ 4.3 User interface ……………………………………............. 48 
+ 4.4 Results & Model Accuracy   ……………………………………............. 52 
+ 4.5 Result Analysis & 
+Discussion  
+……………………………………............. 53 
+5.  Conclusion  ……………………………………............. 56 
+ 5.1 Summary ……………………………………............. 56 
+ 5.2 Limitations ……………………………………............. 57 
+ 5.3 Future scope ……………………………………............. 58 
+  References  ……………………………………............. 60 
+ 
+ 
+ 
+ 
+ 
+1 
+ 
+Acknowledgement 
+ 
+I would like to express my sincere gratitude to all those who contributed to the successful 
+completion of this project.  
+ 
+First and foremost, I am deeply thankful to Dr. Jeevan L J Pinto , my internal guide, and Dr. 
+Ruban S, my external guide for their constant encouragement, expert guidance, and valuable 
+feedback throughout this project. Their insightful suggestions played a crucial role in shaping 
+this work. 
+ 
+I am also grateful to the Department of MSc Data Science , AIMIT, St Aloysius College 
+(Autonomous) for providing the necessary infrastructure, academic environment, and resources 
+to carry out this research. 
+ 
+A special thanks to Ms. Varenya who provided assistance and constructive suggestions during 
+the project. 
+ 
+Special appreciation goes to my classmates and friends for their support, collaboration, and 
+valuable inputs during various stages of this project. 
+ 
+Lastly, I am truly grateful to my family for their patience, understanding, and unwavering 
+support throughout the duration of this academic journey. 
+ 
+ 
+2 
+ 
+List of Figures: 
+ 
+Fig 1: flowchart of the study and the decision tree (CART model). 
+Fig 2: (a) Flow diagram of the proposed model.  
+(b) ARNN model structure. 
+Fig 3: The flow chart for patients’ selection and research design. 
+Fig 4: Decision algorithm for predicting dengue diagnosis. 
+Fig 5: Processing pipeline for image-based dengue detection using platelet and lymphocyte 
+features. 
+Fig 6: Model architecture diagram for the XEWNet model. 
+Fig 7: FWin model. 
+Fig 8: workflow diagram. 
+Fig 9: Workflow diagram. 
+Fig 10: Model development flowchart and ANN architecture of the predictive model. 
+Fig 11: SOM + Random Forest model visualization and clustering. 
+Fig 12: Univariate Analysis. 
+Fig 13: Number of test done per day. 
+Fig 14: Average platelet count per day since onset. 
+Fig 15: Age group distribution. 
+Fig 16: Count of Male and Female Patients. 
+Fig 17: Symptoms count across patients. 
+Fig 18: Symptoms count by age group. 
+Fig 19: Symptoms co-occurrence heatmap. 
+Fig 20: Symptoms count by sex. 
+Fig 21: Correlation heatmap of the lab test. 
+Fig 22: Scatter plot of platelet and haematocrit. 
+Fig 23: Lab test distributions. 
+ 
+3 
+ 
+Fig 24: Workflow diagram 
+Fig 25: User Interface of the website 
+ 
+List of Tables: 
+ 
+Table 1: Key finding and Gap Identified based on the Literature Review. 
+Table 2: Description of the dataset. 
+Table 3: Python Packages and Libraries. 
+Table 4: Key variables used. 
+Table 5: Hardware Specifications. 
+Table 6: Implementation Requirements 
+Table 7:  Key Data Categories 
+ 
+ 
+ 
+ 
+ 
+ 
+4 
+ 
+Abbreviations  
+ 
+DENV - Dengue virus 
+DHF - Dengue haemorrhagic fever   
+DSS - Dengue shock syndrome  
+RBC - Red Blood Cells 
+PII - personally identifiable information 
+ 
+ 
+CSV - Comma separated values 
+XLSX - Microsoft Excel Open XML Spreadsheet  
+ML - Machine Learning 
+NaN - Not a number 
+EDA - Exploratory Data Analysis 
+LSTM - Long Short-Term Memory  
+RNN - Recurrent neural network 
+GRU - Gated Recurrent Unit 
+XGBoost - Extreme Gradient Boosting 
+RMSE - Root Mean Square Error  
+MAE - Mean Absolute Error  
+R² - R-squared 
+ 
+ 
+ 
+5 
+ 
+Predicting Dengue Fever Progression: Predictive Analytics for Platelet 
+Count Data 
+ 
+ 
+Chapter 1  
+ 
+1.1 Overview / Background 
+ 
+Dengue fever is a rapidly spreading mosquito -borne viral disease that affects millions of people 
+annually, particularly in Southeast Asia, the Western Pacific islands, Latin America, and Africa. 
+Caused by the dengue virus (DENV), which exists in four serotypes (DENV -1 to DENV-4), the 
+disease presents a wide range of clinical manifestations —from mild flu -like symptoms to life -
+threatening complications such as dengue haemorrhagic fever (DHF) and dengue shock 
+syndrome (DSS). A particularly dangerous complication of severe dengue is thrombocytopenia, 
+a significant drop in platelet count, which raises the risk of internal bleeding, organ failure, and 
+even death. 
+ 
+Effective management of thrombocytopenia relies heavily on timely monitoring and 
+intervention. However, traditional methods for tracking platelet levels are reactive and fail to 
+provide predictive insight, often leading to delayed treatment. This gap between diagnostics and 
+proactive care presents an opportunity to apply data science solutions for meaningful clinical 
+impact. 
+ 
+The motivation behind this project stems from both the urgency of the healthcare challenge and 
+the potential of data -driven technologies to address it. Rather than selecting a straightforward 
+problem, this project was chosen precisely for its complexity and real -world relevance. It 
+bridges the gap between clinical medicine and computational modeling by aiming to forecast 
+platelet trends using machine learning and time series techniques. Through the analysis of 
+historical clinical data, the goal is to develop a robust predictive model that can alert clinicians 
+to imminent platelet drops—thus enabling timely intervention and potentially saving lives. 
+ 
+This project is not only a valuable academic exercise but also contributes to the broader mission 
+of improving healthcare delivery in resource -constrained, dengue -endemic regions. It also 
+ 
+6 
+ 
+offers scope for future expansion, including integration with electronic health systems, real-time 
+monitoring apps, or extension to other vector -borne diseases with similar clinical patterns. In 
+doing so, the work aspires to enhance the role of artificial intelligence in public health and build 
+scalable, efficient, and context-aware healthcare tools. 
+ 
+1.2 Problem statement 
+ 
+Dengue fever is a mosquito -borne viral disease prevalent in tropical and subtropical regions, 
+posing a significant public health concern. The disease manifests in a spectrum of symptoms, 
+ranging from mild febrile illness to severe complications such as dengue haemorrhagic fever 
+(DHF) and dengue shock syndrome (DSS). Thrombocytopenia, one of the critical complications 
+of severe dengue, is a condition characterized by a drastic reduction in platelet count. A 
+critically low platelet count can lead to life -threatening internal and external bleeding, requiring 
+immediate medical attention. Therefore, continuous monitoring and timely intervention are 
+essential to prevent severe outcomes in affected patients. 
+ 
+Current clinical practices primarily involve reactive monitoring of platelet levels through 
+periodic laboratory tests. These methods, although effective, often result in delayed 
+interventions due to their inability to predict drastic changes in platelet count. As a result, 
+healthcare providers face challenges in administering timely treatments, leading to increased 
+morbidity and mortality among dengue patients. 
+ 
+A data-driven approach to forecasting platelet counts can significantly enhance patient care by 
+enabling early prediction of thrombocytopenia. By leveraging historical platelet count data, 
+machine learning, and time series forecasting models, clinicians can anticipate severe declines 
+in platelet levels and implement pre -emptive interventions. Such a predictive model would aid 
+in risk stratification, allowing for timely administration of supportive treatments such as platelet 
+transfusions, thereby reducing the risk of complications. 
+ 
+This research aims to develop a platelet count forecasting model using past patient data to 
+predict future trends in platelet levels. The model will provide healthcare professionals with a 
+proactive tool to enhance decision-making and optimize resource allocation. By integrating data 
+ 
+7 
+ 
+science methodologies into clinical practice, this study seeks to bridge the gap between reactive 
+and predictive healthcare, ultimately improving patient outcomes in dengue management 
+ 
+1.3 Project Objectives 
+ 
+The primary objective of this research is to develop a predictive model for forecasting platelet 
+counts in dengue patients using historical data. By employing data -driven methodologies, this 
+study aims to enhance early detection and proactive management of thrombocytopenia, thereby 
+reducing the risks associated with severe dengue complications. 
+ 
+The specific objectives of this study are as follows: 
+ 
+1. To analyse historical platelet count trends – Examining past patient data to identify 
+patterns and fluctuations in platelet levels during the course of dengue fever. 
+ 
+2. To develop a predictive model for platelet count forecasting  – Utilizing machine 
+learning and time series forecasting techniques to predict future platelet levels based on past 
+trends. 
+ 
+3. To evaluate the performance of the proposed model  – Assessing the accuracy, 
+reliability, and clinical applicability of the model by comparing its predictions with actual 
+patient outcomes. 
+ 
+4. To provide an early warning system for thrombocytopenia  – Enabling healthcare 
+providers to anticipate severe platelet drops and administer timely interventions, thereby 
+improving patient outcomes and reducing hospital burden. 
+ 
+ 
+ 
+By achieving these objectives, this research aims to bridge the gap between traditional reactive 
+monitoring methods and proactive predictive healthcare, ultimately contributing to improved 
+patient care and better management of dengue-related complications. 
+ 
+ 
+ 
+ 
+ 
+8 
+ 
+1.4 Organization details 
+ 
+St. Aloysius Institute of Management and Information Technology (AIMIT) is a private 
+institute located in Mangalore, Karnataka, established in 2009. It is the new campus for MBA 
+and IT programs offered by St Aloysius (Deemed to be University).  
+AIMIT is a member of XAJBS (Xavier Association of Jesuit Business Schools), India, which 
+has prestigious B -schools like XLRI, XIMB, and LIBA as members. AIMIT is also a member 
+of IJABS, the International Jesuit Association of Business Schools. 
+ 
+Vision: 
+“Empowering youth through excellence in education to shape a better future for humankind” 
+ 
+Mission: 
+ 
+St Aloysius Institutions of the Mangalore Jesuit Educational Society, inspired by the person and 
+mission of Jesus Christ, and guided by the motto “Lucet et Ardet ” meaning “Shine to Enkindle” 
+commit themselves to spread the light of knowledge and wisdom and to kindle the ardour of 
+faith that does justice by forming men and women for others, who are: 
+1. Academically accomplished, 
+2. Emotionally balanced, 
+3. Morally upright, 
+4. Socially responsible, 
+5. Ecologically sensitive 
+6. Professionally dedicated 
+7. so that they are a powerful force for the transformation of society.
+ 
+9 
+ 
+Chapter 2:  Literature Review 
+ 
+2.1 Introduction 
+ 
+Dengue fever, a mosquito -borne viral infection, remains a major public health challenge, 
+particularly in tropical and subtropical regions where it causes substantial morbidity and 
+mortality. Accurate and early prediction of disease severity and outbreak risk is crucial for 
+improving patient outcomes and efficiently managing healthcare resources, especially in low -
+resource settings. Recent advancements in data science, particularly in machine learning (ML), 
+deep learning, and statistical modeling, have opened new avenues for forecasting dengue 
+incidence and classifying disease severity. The literature reviewed in this section spans diverse 
+methodologies and focuses, including clinical and hematological predictors such as platelet 
+indices and leukocyte counts, image -based ML diagnostics, and hybrid time series models like 
+ARIMAX and autoregressive neural networks. Some studies also incorporate climate variables, 
+vector indices, and unsupervised learning approaches to enhance prediction accuracy. 
+Additionally, parallels are drawn with diseases such as Severe Fever with Thrombocytopenia 
+Syndrome (SFTS), which shares clinical similarities with dengue. Collectively, these studies 
+represent the current state of the art and contribute to a comprehensive understanding of how 
+computational and clinical approaches can be leveraged to improve early diagnosis, severity 
+classification, and outbreak forecasting of dengue fever. 
+ 
+2.2 Details of literature review 
+ 
+The growing burden of dengue fever, particularly in tropical and subtropical regions, has 
+prompted extensive research into methods for improving diagnosis, severity assessment, and 
+outbreak forecasting. Recent literature spans a variety of methodological approaches —from 
+classical statistical analysis to advanced machine learning (ML), deep learning, and image -
+based diagnostics—across diverse clinical and geographical contexts. 
+ 
+Phakhounthong et al. (2018)  conducted a retrospective study at the Angkor Hospital for 
+Children in Cambodia, aiming to predict the severity of dengue in pediatric patients using 
+clinical and laboratory indicators available at the time of admission. The study included 198 
+ 
+10 
+ 
+confirmed dengue cases and employed decision tree analysis to identify predictive factors. Key 
+features evaluated included hematocrit, Glasgow Coma Score (GCS), platelet count, urine 
+protein, and creatinine levels. Literature cited within the study emphasized the challenge of 
+differentiating dengue from other febrile illnesses and the limitations of WHO classification 
+systems in clinical settings. [1]  
+ 
+Ghosh et al. (2023)  reviewed a range of epidemiological and predictive modeling  literature, 
+noting that while traditional time series models like ARIMA and its variants are widely used for 
+infectious disease prediction, their accuracy improves with the addition of exogenous variables 
+(e.g., rainfall). The authors build upon previous hybridization methods by combining ARIMAX 
+with ARNN to model both linear and non -linear components of dengue incidence data. The 
+model was tested on historical weekly dengue cases from San Juan and Iquitos, incorporating 
+rainfall data as an exogenous input. It was compared against several benchmark models, 
+including ARNNX, ETSX, TCNX, and TransformerX. [2] 
+ 
+The study by Faridah et al. (2022)  conducted in Indonesia analyzed dynamic changes in 
+platelet count over the course of dengue infection. Their retrospective analysis showed that 
+declining platelet counts —particularly during the critical phase —correlated strongly with the 
+development of dengue h aemorrhagic fever. By identifying temporal trends in platelet 
+dynamics, the authors highlighted the value of serial platelet monitoring for early detection of 
+severe complications. This study underscores the potential of temporal data in enhancing 
+clinical vigilance and preemptive care during dengue outbreaks. [3] 
+ 
+The study by Tanner et al. (2008) adopted a computational approach by applying decision tree 
+algorithms to predict dengue diagnosis and outcomes in the early phase of illness. Using clinical 
+data from patients in Vietnam, they trained and validated decision tree models capable of 
+identifying key clinical features associated with confirmed dengue cases and severe outcomes. 
+These features included platelet count, white blood cell count, tourniquet test results, and days 
+of fever. The model demonstrated good predictive performance, supporting the use of machine 
+learning techniques as an adjunct to clinical decision-making during dengue epidemics. [4] 
+ 
+ 
+11 
+ 
+Mayrose et al. (2023) proposed a machine learning framework using digital pathology to detect 
+dengue from peripheral blood smear (PBS) images. The study utilized blob detection for 
+platelet identification and various feature extraction techniques (morphological, GLSDM, LBP). 
+Several classifiers were tested, achieving up to 95.74% accuracy with SVM. It stands out for its 
+image-based ML approach, though limited by small sample size and exclusion of cytoplasmic 
+features. [5] 
+ 
+Panja et al. (2022)  introduced the XEWNet (Extended Wavelet Neural Network), combining 
+wavelet decomposition (MODWT) with an ensemble neural network for dengue forecasting 
+across San Juan, Iquitos, and Ahmedabad. Rainfall was found to be a causally significant 
+predictor. This study surpassed traditional and deep learning models in both short -term and 
+long-term forecasts. [6] 
+ 
+Tran & Xin (2024) evaluated transformer-based architectures for long-range dengue prediction 
+using multivariate climate and case data from Singapore (2000 –2019). The FWin Transformer 
+(Fourier Mixed Window Attention) outperformed prior models (Autoformer, PatchTST, 
+Fedformer) in both accuracy and forecasting duration. This paper offers a scalable architecture 
+capable of handling non-stationary multivariate time series. [7] 
+ 
+He et al. (2024)  addressed risk prediction in SFTS using a clinical dataset of 483 patients. 
+Although focused on SFTS, the approach is directly applicable to dengue due to the clinical 
+overlap. Their ML model (XGBoost) showed remarkable performance in predicting mortality, 
+highlighting the role of early lab results and systemic symptoms in clinical prognosis. [8] 
+ 
+Ong et al. (2023)  developed a dengue outbreak prediction model based on both vector indices 
+and meteorological data across Kuala Lumpur districts. Their comparative analysis of seven ML 
+classifiers found ensemble methods, especially XGBoost, to perform best. The Boruta algorithm 
+was used to identify significant variables, revealing that the container index was the least 
+important, improving the AUC by 6% upon removal. [9] 
+ 
+ 
+12 
+ 
+Silitonga et al. (2021) focused on predicting dengue severity levels (DF, DHF1, DHF2) using a 
+small dataset of 77 patients from Indonesia. The study employed Artificial Neural Networks 
+(ANN) and Discriminant Analysis (DA). ANN models using logistic and tanh activation 
+functions achieved 90.91% accuracy, outperforming DA. This model aims to support early 
+diagnosis during the third day of fever, which typically marks the transition to the critical phase. 
+[10] 
+ 
+Hair et al. (201 9) used unsupervised learning (SOM + Random Forest) to identify clinical 
+patterns from 523 confirmed dengue cases in Brazil. Their clustering found four distinct groups 
+correlating with disease severity, with age as the primary differentiator. Warning signs such as 
+abdominal pain, hematocrit rise, and thrombocytopenia further differentiated cluster severity. 
+The approach offers a novel method to uncover hidden clinical structures in dengue cases. [11] 
+ 
+2.3 Models / Algorithms used  
+ 
+The study by Phakhounthong et al., 2018 contains a flowchart of the study as well as decision tree 
+(CART model) diagram built using J48 algorithm.   
+ 
+ 
+(a) Flowchart of the study 
+ 
+13 
+ 
+ 
+(b) decision tree (CART model) 
+Fig 2.1: flowchart of the study and the decision tree (CART model) 
+ 
+Ghosh et al., 2023  contains a conceptual workflow of the hybrid ARIMA -ARNN model including 
+data input, preprocessing, model layers, and output evaluation. 
+ 
+Fig 2.2: (a) Flow diagram of the proposed model    (b) ARNN model structure. 
+ 
+The study by Faridah et al. (2022)  contains a  flowchart detailing the study's methodology and 
+patient inclusion criteria is provided. 
+ 
+14 
+ 
+ 
+Fig 2.3: The flow chart for patients’ selection and research design. 
+ 
+The study by Tanner et al. (2008)  features a decision tree diagram representing the algorithm used 
+for predicting dengue diagnosis and outcomes. 
+ 
+Fig 2.4: Decision algorithm for predicting dengue diagnosis 
+ 
+15 
+ 
+Mayrose et al., 2023 presents a processing pipeline for image-based dengue detection using platelet 
+and lymphocyte features and ML classifiers 
+ 
+Fig 2.5: Processing pipeline for image -based dengue detection using platelet and lymphocyte 
+features 
+ 
+Panja et al., 2022 includes a detailed model architecture diagram for the XEWNet model integrating 
+wavelet transform, ANN, and exogenous climate variables 
+ 
+Fig 2.6: Model architecture diagram for the XEWNet model 
+ 
+Tran & Xin, 2024 presents the FWin model overview 
+ 
+16 
+ 
+ 
+Fig 2.7: FWin model 
+ 
+The paper by He et al. (2024)  contains a workflow diagram  showing the data preprocessing, model 
+building (six ML models), evaluation, and deployment of a web calculator. 
+ 
+Fig 2.8: workflow diagram 
+ 
+ 
+17 
+ 
+The paper by  Ong et al., 2023  includes a workflow diagram for the development of machine 
+learning classifiers using all variables or Boruta variables 
+ 
+Fig 2.9: Workflow diagram 
+ 
+The paper by  Silitonga et al., 2021 features a model development flowchart & architecture of the 
+predictive model. 
+ 
+(a) Model development flowchart 
+ 
+18 
+ 
+ 
+(b) ANN architecture 
+Fig 2.10: Model development flowchart and ANN architecture of the predictive model 
+ 
+The study by  Hair et al., 2019  Contains a workflow diagram  for clinical dengue pattern 
+classification 
+ 
+Fig 2.11: SOM + Random Forest model visualization and clustering 
+ 
+ 
+19 
+ 
+2.4 Findings & Gaps Identified 
+ 
+Paper Title Key Findings Gaps Identified 
+Predicting the severity of 
+dengue fever in children on 
+admission based on clinical 
+features and laboratory 
+indicators: application of 
+classification tree analysis  
+(Phakhounthong et al., 2018) 
+Developed a CART model using 
+5 variables (hematocrit, GCS, 
+creatinine, urine protein, platelet 
+count) with ~64% accuracy for 
+predicting severe dengue. 
+Moderate accuracy; model 
+limited to pediatric data and 
+specific to Cambodian 
+setting; not validated 
+externally. 
+Anticipating dengue outbreaks 
+using a novel hybrid ARIMA -
+ARNN model with exogenous 
+variables (Ghosh et al., 2023) 
+Proposed hybrid model 
+improved over ARIMA in many 
+cases; maintained interpretability 
+and robustness. 
+Limited to two regions (San 
+Juan & Iquitos); did not 
+explore spatial forecasting 
+or uncertainty 
+quantification. 
+Dynamic Changes of Platelet 
+and Factors Related Dengue 
+Haemorrhagic Fever: A 
+Retrospective Study in 
+Indonesian 
+Faridah et al. (2022) 
+Identified dynamic changes in 
+platelet counts and other 
+hematological parameters 
+associated with progression to 
+dengue hemorrhagic fever. 
+Retrospective nature limits 
+real-time applicability; 
+requires prospective studies 
+for validation. 
+Decision tree algorithms 
+predict the diagnosis and 
+outcome of dengue fever in the 
+early phase of illness 
+Tanner et al. (2008) 
+Developed decision tree models 
+using clinical and hematological 
+parameters to predict dengue 
+diagnosis and outcomes with 
+reasonable accuracy. 
+Early-phase data may not 
+capture full disease 
+progression; models need 
+validation in diverse 
+populations. 
+Machine learning -based 
+detection of dengue from blood 
+smear images utilizing platelet 
+and lymphocyte characteristics 
+SVM and Decision Tree 
+achieved 93.6% accuracy using 
+lymphocyte/platelet features 
+Small dataset; requires 
+external dataset validation; 
+limited generalizability to 
+ 
+20 
+ 
+(Mayrose et al., 2023) from blood smear images. other image sources. 
+An ensemble neural network 
+approach to forecast dengue 
+outbreak based on climatic 
+condition (Panja et al., 2022) 
+Outperformed other statistical 
+and ML methods in 75% of 
+scenarios across 3 cities using 
+rainfall data. 
+Only one exogenous factor 
+(rainfall) used; model 
+complexity may hinder real -
+world deployment. 
+FWin Transformer for Dengue 
+Forecasting Under Climate & 
+Ocean Influence  (Tran & Xin, 
+2024) 
+Proposed FWin  Transformer 
+showed superior long -range 
+dengue forecasting up to 60 
+weeks. 
+Does not model spatial 
+interactions; requires further 
+validation in other regions 
+beyond Singapore. 
+Machine Learning for 
+Identifying Risk of Death in 
+Patients with severe fever with 
+thrombocytopenia syndrome  
+(He et al., 2024) 
+Developed ML models 
+(XGBoost, LightGBM) for death 
+risk prediction; ensemble model 
+achieved >90% AUC. 
+Focused on SFTS, not 
+dengue directly; 
+generalization to other 
+diseases (like dengue) not 
+demonstrated. 
+Predicting dengue 
+transmission rates by 
+comparing different machine 
+learning models with vector 
+indices and meteorological 
+data (Ong et al., 2023) 
+Ensemble models (XGBoost, 
+RF, AdaBoost) outperformed 
+classical ML models; removing 
+less important variables 
+improved performance. 
+Did not incorporate spatial 
+or temporal autocorrelation 
+in model; lacked 
+socioeconomic or mobility 
+data. 
+Comparison of dengue 
+predictive models developed 
+using artificial neural network 
+and discriminant analysis with 
+small dataset  (Silitonga et al., 
+2021) 
+ANN (logistic and tanh 
+activation) achieved 91% 
+sensitivity and 95% specificity 
+using small clinical dataset. 
+Limited sample size; lacks 
+external validation; no 
+inclusion of time series or 
+external covariates. 
+ 
+21 
+ 
+Characterization of clinical 
+patterns of dengue patients 
+using an unsupervised 
+machine learning approach  
+(Hair et al., 2019) 
+SOM + Random Forest clustered 
+dengue cases into 4 groups by 
+severity; age was major 
+determinant. 
+Cross-sectional only; no 
+time-based disease 
+progression modeling; 
+requires longitudinal 
+validation. 
+ 
+Table 2.1: Key finding and Gap Identified based on the Literature Review 
+ 
+ 
+ 
+ 
+ 
+22 
+ 
+Chapter 3: Methodology 
+ 
+3.1 Introduction 
+ 
+This chapter gives an outline of methods that were followed during the project to attain the 
+goal. It included data sources & format, data preprocessing techniques, data exploration and 
+analysis, process description, workflow and requirements of hardware & software for 
+completion of the project. It provides information about the dataset and from where it was 
+taken. Workflow of the project which gives a brief understanding about what exactly is done in 
+the project. Data visualization is done to understand how data appears. 
+ 
+3.2 Data Sources & Format 
+ 
+The dataset used in this study was obtained from Fr. Muller’s Medical College Hospital , 
+Mangalore, as part of a clinically supervised dengue study. The data collection was conducted 
+in accordance with ethical research guidelines and was approved by the institutional ethics 
+committee under Protocol No: FMMCIEC/CCM/149/2019 . The dataset comprises clinical 
+records of 305 dengue-positive patients, and includes both demographic details and time-series 
+medical test results. The dataset was shared in CSV format and permission was obtained prior 
+to its use for research and analysis purposes, ensuring compliance with data privacy and ethical 
+standards. The dataset includes the following types of variables: 
+  
+Variable Description Type 
+p_no.   Unique patient identifier Numerical 
+Age (Years)   
+ 
+Age of the patient in years Numerical 
+Sex Biological sex of the patient (Male/Female) Categorical 
+Date of Onset Date when the patient first showed symptoms Object 
+Date of Discharge  Date when the patient was discharged Object 
+ 
+23 
+ 
+Symptoms  Text field listing patient symptoms Object 
+Date of Test & Time of Test  Date and time when a test was conducted Object 
+Haemoglobin (gm/Dl)    Haemoglobin level (g/dL) Object 
+Platelet (cells/cu.mm)  Platelet count (cells/µL) Object 
+Red Blood Cell Count 
+(millions/cu.mm) 
+Red Blood Cell count Object 
+Haematocrit (Packed Cell 
+Volume) (%)   
+Percentage of red blood cells in blood Object 
+Table 3.1: Description of the dataset 
+ 
+All personally identifiable information (PII) was removed prior to analysis to maintain patient 
+confidentiality. The data was used solely for academic and research purposes with strict 
+adherence to data privacy and ethical standards. 
+ 
+3.2.1 Acknowledgement  
+ 
+The author sincerely acknowledges the support and guidance provided by Fr. Muller’s 
+Medical College Hospital  in granting access to anonymized patient records for this study. 
+Special thanks to the hospital’s Ethics Committee for providing ethical clearance under 
+Protocol No: FMMCIEC/CCM/149/2019, which enabled the responsible use of clinical data 
+for research. Gratitude is also extended to the medical staff and data coordinators who assisted 
+in data organization and validation. 
+ 
+3.3 Data Preprocessing – Extraction & preparation 
+ 
+In order to prepare the raw dataset of dengue patients for predictive mode lling, a series of data 
+preprocessing steps were conducted to transform the unstructured information into a clean, 
+ 
+24 
+ 
+analysable format. Initially, the dataset was standardized by renaming columns for consistency 
+and forward-filling the missing values in the patient identification column.  
+ 
+Key lab test columns such as Haematocrit, RBC, Platelet, and Haemoglobin were examined for 
+non-numeric entries like “not done”, which were replaced with NaN values, followed by 
+converting these columns into appropriate numerical data types. The Sex column was also 
+cleaned to ensure binary categorization (i.e., only "Male" and "Female"), and all date and time 
+entries were validated, cleaned, and then transformed into separate Date and Time columns 
+using the datetime format. 
+ 
+Further refinement included ensuring each patient had a unique identifier. In instances where 
+the same patient number was assigned to multiple records with different age values, the records 
+were split and reindexed so that each patient had a distinct ID. The Symptoms column, which 
+contained free-text entries, was processed by extracting unique symptom descriptors for each 
+patient, standardizing their format (e.g., capitalizing the first letter), and transforming them into 
+individual binary columns, thereby creating a structured feature set.  
+ 
+Additional features were engineered, such as days_since_onset, to quantify disease progression, 
+and lag features for Platelet and Haematocrit values to help model temporal trends. Finally, 
+categorical features like Sex were encoded numerically to prepare the data for machine learning 
+algorithms. These preprocessing steps significantly improved the quality and utility of the 
+dataset, enabling more accurate and reliable predictions. 
+ 
+   3.4 Data Exploration & analysis 
+ 
+Data exploration and analysis form a critical part of understanding trends, distributions, and 
+patterns in any dataset. In this study, we performed a comprehensive analysis of clinical and 
+demographic features associated with dengue patients, focusing particularly on platelet count 
+trends. The visualizations generated during the analysis provide valuable insights, summarized 
+under the following key areas: 
+ 
+ 
+25 
+ 
+3.4.1 Univariate Analysis 
+ 
+  
+  (a) Age distribution    (b) Hematocirt distribution 
+ 
+ 
+  
+ (c) Hemoglobin distribution   (d) Platelet distribution 
+ 
+Fig 12: Univarite Analysis 
+ 
+Univariate analysis was performed to understand the distribution of key individual  lab features 
+in the dataset. The histograms and density plots offer insights into the central tendency, spread, 
+and skewness of the variables: 
+ 
+ 
+26 
+ 
+➢ Age: The distribution of age is right-skewed, with a high concentration of patients in 
+the younger age group (10 –30 years), reflecting the known vulnerability of adolescents 
+and young adults to dengue infection. 
+➢ Hematocrit: The distribution appears approximately normal, centered  around 40%. 
+This is within expected physiological ranges, although outliers at both ends may indicate 
+hematological complications in some cases. 
+➢ Hemoglobin: The values cluster tightly around normal reference ranges (10 –18 
+g/dL), though a few high values may suggest data entry errors or rare clinical cases. 
+➢ Platelet Count: This variable is highly right -skewed, with most values concentrated 
+below 250,000/μL. A few extreme outliers exceed 1,000,000/μL, which could be 
+abnormal physiological responses or data quality issues. 
+ 
+This univariate exploration helped identify the presence of skewed distributions, potential 
+outliers, and the need for transformation or scaling during preprocessing. 
+ 
+3.4.2 Time Based Analysis 
+ 
+Fig 13: Number of test done per day 
+ 
+27 
+ 
+ 
+Fig 14: Average platelet count per day since onset 
+ 
+Time-based analysis was conducted to evaluate the temporal patterns in test frequency and 
+platelet count progression relative to the onset of dengue symptoms. 
+ 
+➢ Number of Tests per Day: The upper plot reveals that the majority of diagnostic tests 
+were conducted within the first 3 –5 days after symptom onset, peaking around Day 1. 
+This aligns with clinical practice, as early testing is crucial for confirming dengue 
+diagnosis and initiating timely management. 
+➢ Average Platelet Count per Day Since Onset: The lower plot shows that average platelet 
+counts remain relatively stable in the early days but begin to rise significantly after Day 
+6. This trend indicates the typical recovery pattern in dengue patients, as platelet levels 
+drop during the critical phase (Day 3–6) and begin to improve afterward. 
+ 
+This temporal analysis confirms both clinical expectations and data reliability. It also highlights 
+the importance of monitoring platelet trends closely between Days 3 to 7 when the risk of 
+complications is highest. 
+ 
+ 
+ 
+ 
+ 
+ 
+28 
+ 
+3.4.3 Age and Gender Demographics 
+ 
+ 
+Fig 15: Age group distribution 
+ 
+ 
+Fig 16: Count of Male and Female Patients 
+ 
+Understanding the demographic distribution of dengue patients helps identify the most affected 
+groups and tailor public health interventions accordingly. 
+ 
+29 
+ 
+➢ Age Group Distribution: As shown in the left plot, the majority of dengue -positive 
+cases fall under the Young Adult category, followed by Adults and Seniors. Teens and 
+Kids comprise a smaller portion of the affected population. This suggests that 
+individuals aged between 20–40 years are the most vulnerable or most frequently tested 
+during dengue outbreaks. 
+➢ Gender Distribution: The right plot depicts a nearly balanced gender ratio, with a 
+slightly higher number of female patients compared to male patients. This indicates a 
+uniform distribution of dengue cases across sexes, with no major gender bias in test 
+frequency or positivity. 
+ 
+This demographic insight aids in risk stratification and emphasizes the need for awareness 
+campaigns targeted toward young adults and working-age individuals. 
+ 
+3.4.4 Symptom Based Analysis 
+This section focuses on understanding how various symptom categories are distributed across 
+patients, age groups, and genders, as well as how they co-occur. 
+ 
+ 
+Fig 17: Symptoms count across patients 
+ 
+30 
+ 
+Symptom Distribution Across Patients 
+The bar plot shows the total number of patients falling under each major symptom category: 
+➢ The majority of patients presented with Common Symptoms of Dengue Fever such 
+as fever, headache, and body aches. 
+➢ Hematological issues (e.g., thrombocytopenia and leukopenia) and Lab -confirmed 
+dengue cases also formed a significant portion. 
+➢ Symptoms with warning signs, organ involvement, and comorbidities were less 
+frequent but clinically important, indicating progression or severity. 
+ 
+ 
+Fig 18: Symptoms count by age group 
+ 
+Symptom Count by Age Group 
+When symptoms were grouped by age: 
+➢ Young Adults were the most affected across all categories, particularly for common 
+and hematological symptoms. 
+➢ Children (Kids and Teens) had fewer complications like organ involvement or 
+comorbidities, while Seniors showed relatively higher rates of co-existing 
+conditions. 
+ 
+31 
+ 
+ 
+Fig 19: Symptoms co-occurrence heatmap 
+ 
+Symptom Co-occurrence Heatmap 
+The co -occurrence matrix helps understand how often different symptom categories appear 
+together: 
+➢ Hematological Issues and Warning Signs had mild positive correlation. 
+➢ With and Without Warning Signs showed a moderate inverse relationship. 
+➢ The absence of strong correlations across most categories suggests that symptom 
+manifestation varies greatly by individual case. 
+ 
+ 
+32 
+ 
+ 
+Fig 20: Symptoms count by sex 
+ 
+Symptom Count by Sex 
+Sex-wise analysis showed: 
+➢ A fairly balanced distribution between female and male patients across all symptom 
+categories. 
+➢ Slightly higher counts in females for common symptoms and hematological issues, 
+possibly due to sample size or healthcare-seeking behavior. 
+ 
+3.4.5 Lab Test Feature Distributions 
+ 
+This section explores the distribution and interrelationships of key lab parameters —platelet 
+count, hematocrit, hemoglobin, and RBC —which are essential clinical markers for tracking 
+dengue progression. 
+ 
+ 
+33 
+ 
+ 
+Fig 21: Correlation heatmap of the lab test 
+ 
+Correlation Heatmap 
+The correlation matrix highlights the following: 
+➢ A very strong positive correlation (r = 0.94) between hemoglobin and hematocrit, 
+confirming biological consistency, as both derive from red blood cell volume. 
+➢ Weak or no correlation between platelet count and the other lab variables, indicating that 
+platelet levels fluctuate independently during disease progression. This justifies treating 
+platelet count as a standalone target variable in prediction tasks. 
+➢ Minimal correlation between RBC and other parameters, suggesting relatively stable 
+RBC levels across patients. 
+ 
+34 
+ 
+ 
+Fig 22: Scatter plot of platelet and hematocrit 
+ 
+Scatter Plot – Platelet vs. Hematocrit 
+The scatter plot provides insight into the interaction between platelet count and hematocrit 
+levels. While there is no obvious linear correlation, a concentration of points with low platelet 
+counts and moderate to high hematocrit suggests plasma leakage and thrombocytopenia 
+occurring together—a hallmark of severe dengue cases. This relationship, though weak, can aid 
+in rule-based clinical classifications. 
+ 
+ 
+     (a) Hemoglobin count distribution    (b) Hematocrit count distribution 
+ 
+35 
+ 
+ 
+(c) Platelet count distribution 
+Fig 23: Lab test distributions 
+ 
+Distributions: 
+➢ Hematocrit Distribution: The histogram shows a normal -like distribution, with most 
+values concentrated between 35% and 45%. This suggests that the majority of patients 
+had hematocrit levels within or near the normal range, though extreme values could 
+indicate dehydration or internal bleeding. 
+➢ Hemoglobin Distribution: Hemoglobin values also follow a bell -shaped curve, ranging 
+mostly between 10 –16 g/dL. This supports the reliability of data and reflects typical 
+clinical expectations, with a few low values possibly indicating anemia. 
+➢ Platelet Count Distribution:  Platelet count is highly right -skewed, with most patients 
+falling below 250,000/μL. A few extremely high values may be due to lab anomalies or 
+input errors. This skewness justifies the need for transformation or normalization before 
+modeling. 
+ 
+3.5 Process Description 
+ 
+This section elaborates the entire process involved in the development and functioning of the 
+platelet count forecasting system for dengue patients. The proposed software system leverages 
+ 
+36 
+ 
+historical patient data, symptoms, and laboratory values to predict future platelet counts using 
+data-driven forecasting models. The software is modular in nature and each module is 
+responsible for a specific task in the data pipeline, from data ingestion to prediction 
+visualization. Below is a detailed breakdown of the modules and the workflow logic. 
+ 
+Overview of the System 
+The platelet forecasting system comprises the following key modules: 
+1. Data Collection and Preprocessing Module 
+2. Feature Engineering Module 
+3. Exploratory Data Analysis (EDA) Module 
+4. Model Development and Training Module 
+5. Platelet Forecasting Module 
+6. Visualization and Output Interface 
+ 
+Each module interacts with others in a linear or feedback loop as necessary, forming a coherent 
+data processing pipeline. The system is designed to handle tabular datasets containing 
+demographic, temporal, clinical, and laboratory test features for dengue patients. 
+ 
+Module Descriptions and Logic 
+1. Data Collection and Preprocessing Module 
+Function: 
+This module is responsible for loading and validating the dataset, handling missing or 
+inconsistent data, and converting it into a machine-readable format. 
+Inputs: Raw CSV/XLSX dataset containing: 
+➢ Patient ID, age, sex 
+➢ Date of admission/discharge, date and time of test 
+➢ Clinical symptoms (fever, rash, bleeding, etc.) 
+➢ Lab test values (platelet count, haemoglobin, RBC, haematocrit) 
+ 
+37 
+ 
+Process Logic: 
+➢ Convert date fields to datetime objects. 
+➢ Normalize text fields (e.g., symptom descriptions). 
+➢ Impute missing values using statistical or regression-based methods. 
+➢ Group patient data by ID and order by timestamp to maintain temporal continuity. 
+ 
+2. Feature Engineering Module 
+Function: 
+Enhances raw data by creating derived features that can improve model performance. 
+ 
+Process Logic: 
+➢ Generate time-lagged features for platelet count (e.g., previous day counts). 
+➢ Create duration features (e.g., number of days since symptom onset). 
+➢ Categorize age into brackets (e.g., child, adult, elderly). 
+➢ Encode sex as binary. 
+➢ Aggregate symptom combinations to generate severity scores. 
+➢ Normalize lab values using min-max or z-score normalization. 
+ 
+3. Exploratory Data Analysis (EDA) Module 
+Function: 
+Performs statistical and visual analysis to understand patterns and guide model development. 
+ 
+Process Logic: 
+➢ Visualize platelet trends over time for individual patients. 
+➢ Correlation heatmaps to understand relationships between features. 
+➢ Identify outliers using boxplots and statistical thresholds. 
+➢ Analyze symptom frequency and co-occurrence. 
+ 
+38 
+ 
+ 
+4. Model Development and Training Module 
+Function: 
+Builds and trains machine learning models to forecast platelet counts. 
+ 
+Process Logic: 
+➢ Split dataset into training and testing sets (with patient-wise split to avoid data leakage). 
+➢ Use time -series forecasting models (e.g., LSTM, Random Forest Regressor, or 
+XGBoost). 
+➢ Train models on sequential data with features selected from engineering step. 
+➢ Perform hyperparameter tuning using cross-validation techniques. 
+➢ Evaluate models using RMSE, MAE, and R² scores. 
+ 
+5. Platelet Forecasting Module 
+Function: 
+Generates predictions for future platelet counts based on the trained model. 
+ 
+Process Logic: 
+➢ For a given patient, fetch the latest temporal data and feed it into the model. 
+➢ Predict platelet counts for the next 1–3 days. 
+➢ Compare predicted vs. actual (if available) to monitor accuracy. 
+➢ Optionally, provide risk stratification (e.g., "critical", "low -risk") based on predicted 
+values. 
+ 
+6. Visualization and Output Interface 
+Function: 
+Displays the prediction results and other key insights in a user-friendly format. 
+Process Logic: 
+ 
+39 
+ 
+➢ Plot predicted vs. actual platelet count trends. 
+➢ Interactive charts for lab value trends and symptom timelines. 
+ 
+3.6 Workflow diagram 
+ 
+ 
+Fig 24: Workflow diagram 
+ 
+3.7 Hardware & Software specifications  
+ 
+This section outlines the complete hardware and software stack used for the development and 
+deployment of the platelet count forecasting system for dengue patients. It includes the 
+programming languages, libraries, frameworks, and data processing tools employed, as well as 
+variable definitions and hardware configurations used during development and testing. 
+ 
+40 
+ 
+ 
+Software Specifications 
+ 
+Programming Languages Used 
+ 
+➢ Python 3.10: The primary programming language used for data preprocessing, feature 
+engineering, model development, and prediction. Chosen for its simplicity, rich ecosystem, and 
+extensive data science support. 
+ 
+Python Packages and Libraries 
+Package Purpose/Usage 
+pandas For data manipulation and analysis (cleaning, transformation, grouping). 
+numpy For numerical operations and efficient array handling. 
+matplotlib / 
+seaborn 
+For data visualization and plotting platelet trends. 
+scikit-learn For machine learning model development (Random Forest, Regression, 
+etc.). 
+xgboost  
+Gradient boosting model for better predictive performance 
+tensorflow / keras For deep learning and time-series modeling (LSTM/GRU networks). 
+Streamlit Used to build a lightweight, interactive web interface to display 
+predictions. 
+joblib / pickle For model serialization and saving/loading trained models. 
+datetime For handling and processing date/time values in patient records. 
+Table 3: Python Packages and Libraries 
+ 
+ 
+User Interface:  
+ 
+41 
+ 
+➢ Streamlit: An open-source Python framework to build interactive dashboards and 
+visualization tools. Used to present model predictions in a clean, user -friendly web 
+interface. 
+ 
+Key Variables Used in the Project 
+ 
+Variable Name Description Importance 
+patient_id Unique identifier for each 
+patient. 
+Used for grouping and 
+time-series segmentation. 
+Age, Sex Demographic features. Possible predictors of 
+disease severity. 
+Date of Onset, Date of Discharge,  
+Date of Test & Time of Test 
+Time features related to 
+disease progression. 
+Used in trend analysis 
+and time-lagged features. 
+Symptoms Categorical/binary symptom 
+data (e.g., fever, rash). 
+Key indicators of severity 
+and disease stage. 
+Platelet (cells/cu.mm) Target variable (numeric, 
+time-series). 
+Main value to be 
+forecasted. 
+Hemoglobin (gm/Dl), Red Blood Cell 
+Count (millions/cu.mm) , Hematocrit 
+(Packed Cell Volume) (%) 
+Lab test results used as 
+features. 
+Input predictors; may 
+indicate internal bleeding 
+or severity. 
+Table 4: Key variables used 
+ 
+Hardware Specifications 
+ 
+Component Specification 
+Processor 12th Gen Intel(R) Core(TM) i5-12450H   2.00 GHz 
+RAM 16.0 GB (15.7 GB usable) 
+Operating System Windows 11 Home Single Language 
+Development Environment Jupyter Notebook, VS Code, Streamlit, Anaconda 
+Table 5: Hardware Specifications 
+ 
+42 
+ 
+ 
+The development of the platelet forecasting system relies heavily on Python’s data science 
+ecosystem and a robust machine learning workflow. The variables are carefully selected based 
+on clinical relevance and data availability. The software is designed to run efficiently on mid -
+range hardware, making it accessible for most healthcare research or institutional settings. The 
+modular design ensures future adaptability for integration with hospital management systems or 
+mobile health apps. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+43 
+ 
+Chapter 4: Model Details and Implementation 
+ 
+4.1 Model building  
+This section presents a comprehensive overview of the model ling techniques used for 
+forecasting platelet counts in dengue patients. The model ling strategy involves understanding 
+the data structure, selecting appropriate algorithms, engineering relevant features, and validating 
+the predictive performance of the models. 
+ 
+Model 1: Random Forest Regressor 
+ 
+Algorithm Description 
+Random Forest is an ensemble learning method based on decision trees. It builds multiple trees 
+on random subsets of the data and averages the predictions. 
+ 
+Mathematical Structure: 
+Given training data 
+ , the random forest prediction is: 
+ 
+Where: 
+❖ T is the total number of trees. 
+❖ ft(x) is the prediction of the t-th decision tree. 
+Advantages: 
+❖ Handles non-linear relationships. 
+❖ Robust to outliers and missing values. 
+❖ Performs well with relatively small datasets. 
+Implementation: 
+❖ Library: sklearn.ensemble.RandomForestRegressor 
+❖ Key parameters: n_estimators=100, max_depth=10 
+❖ Train-test split: 80–20 by patient  
+ 
+Model 2: LSTM (Long Short-Term Memory Network) 
+ 
+44 
+ 
+ 
+Algorithm Description 
+LSTM is a type of recurrent neural network (RNN) suitable for sequence prediction. It is 
+effective in capturing long-term dependencies in time-series data. 
+ 
+Mathematical Structure: 
+For each time step t: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Where: 
+❖ xt: Input vector at time t 
+❖ ht: Hidden state 
+❖ Ct: Cell state 
+Implementation: 
+❖ Library: tensorflow / keras 
+❖ Input shape: (n_days, n_features) 
+❖ Layers: 
+o LSTM layer (units=64) 
+o Dense layer (units=1) 
+❖ Optimizer: Adam 
+❖ Loss: MSE 
+ 
+Training Strategy: 
+❖ Sequence data per patient 
+❖ Normalize features (MinMaxScaler) 
+❖ Early stopping and dropout used to prevent overfitting 
+ 
+ 
+45 
+ 
+Model 3: XGBoost Regressor (XGBRegressor) 
+ 
+Algorithm Description 
+XGBoost (Extreme Gradient Boosting) is an advanced implementation of the gradient boosting 
+algorithm. It builds additive models in a forward, stage -wise fashion and allows optimization of 
+arbitrary differentiable loss functions. It is highly efficient, flexible, and accurate for 
+structured/tabular data. 
+ 
+Mathematical Structure: 
+XGBoost minimizes the regularized loss function: 
+ 
+Where: 
+❖ 
+ : Loss function (e.g., squared error) 
+❖ fk∈ F: Each fk is a decision tree 
+❖ 
+ : Regularization term for model complexity 
+❖ T: Number of leaves in the tree 
+❖ w: Leaf weights 
+❖ 𝛄,𝛌: Regularization parameters 
+ 
+Implementation 
+❖ Library Used: xgboost.XGBRegressor 
+❖ Input Features: 
+➢ Lagged platelet counts (t-1, t-2) 
+➢ Symptoms (binary encoded) 
+➢ Demographic variables (age, sex) 
+➢ Lab values (haemoglobin, hematocrit, RBC) 
+➢ Days since onset 
+❖ Hyperparameters: 
+➢ n_estimators = 200 
+➢ max_depth = 6 
+ 
+46 
+ 
+➢ learning_rate = 0.05 
+➢ subsample = 0.8 
+➢ colsample_bytree = 0.8 
+➢ reg_lambda = 1, reg_alpha = 0.5 
+❖ Loss Function: Mean Squared Error (MSE) 
+❖ Training Strategy: 
+➢ Patient-wise split to avoid data leakage 
+ 
+ 
+Implementation Requirements 
+ 
+Requirement Details 
+Python Version 3.10 
+Libraries pandas, scikit-learn, keras, tensorflow, matplotlib 
+Runtime Environment Jupyter Notebook / VS Code 
+Table 6: Implementation Requirements 
+ 
+4.2 Data Inputs 
+ 
+This section explains the nature, structure, and processing of input data fed into the machine 
+learning models for predicting platelet counts in dengue patients. It includes an overview of the 
+raw data, preprocessing pipeline, and how the model transforms this data to yield accurate 
+predictions. 
+ 
+4.2.1. Nature of the Input Data 
+ 
+The dataset consists of structured clinical data collected from 493 dengue patients. Each row 
+represents a test entry recorded for a specific patient at a specific time. The dataset includes 
+both static and time-varying features. 
+ 
+Key Data Categories: 
+ 
+47 
+ 
+ 
+Category Features 
+Demographic Data Patient ID, Age, Sex 
+Symptom Data Thrombocytopenia, Fever related, Weakness & Fatigue, etc. (binary flags) 
+Lab Test Data Platelet Count, Hemoglobin, RBC Count, Hematocrit 
+Time Information Date of Onset, Date of Test, Days Since Onset 
+Target Variable Platelet Count (next day or multiple days ahead, depending on model) 
+Table 7:  Key Data Categories 
+ 
+4.2.2. Input Features to the Model 
+ 
+The models were fed with numerical and categorical features, engineered to enhance predictive 
+performance. Here's a breakdown: 
+ 
+Time Series Features: 
+➢ platelet_count_t-1, t-2, ..., up to t-n: Historical platelet values 
+➢ Rolling mean and standard deviation of past 2–3 days 
+ 
+Patient Metadata: 
+➢ age: Numeric 
+➢ sex: Binary encoded (0 = Female, 1 = Male) 
+ 
+Lab Values: 
+➢ Hemoglobin (gm/Dl): Float 
+➢ Red Blood Cell Count (millions/cu.mm): Float 
+➢ Hematocrit (Packed Cell Volume) (%): Float 
+ 
+Symptoms (binary-encoded): 
+➢ fever, rash, bleeding, vomiting, NS1 Ag positive, etc. 
+ 
+Temporal Info: 
+➢ days_since_onset: Integer 
+➢ date_of_test: Used for time alignment 
+ 
+48 
+ 
+4.2.3. Data Preprocessing 
+ 
+To prepare the data for modelling, the following steps were applied: 
+ 
+4.2.4. Data Pipeline Flow 
+ 
+1. Raw Input: Patient test records including date-wise lab results and symptom flags. 
+ 
+2. Preprocessing Layer: 
+➢ Missing value imputation 
+➢ Encoding and scaling 
+➢ Feature creation (lags, rolling means, etc.) 
+ 
+3. Model Input Structure: 
+➢ For LSTM: Sequences per patient → shape (n_timesteps, n_features) 
+➢ For XGBoost  / Random Forest: Flat tabular vectors → shape (n_samples,  
+n_features) 
+ 
+4. Prediction Output: 
+➢ Predicted platelet_count for next day (t+1), or optionally for t+1 to t+3 
+ 
+4.2.5. Model Output Interpretation 
+ 
+The model returns a predicted platelet count value based on the most recent information 
+available. This value is clinically useful to: 
+➢ Track downward trends indicating risk of haemorrhage 
+➢ Plan interventions like hospitalization or transfusion 
+➢ Compare patient progress across different treatment plans 
+ 
+4.3 User interface  
+ 
+To make the platelet count prediction tool accessible and user -friendly, a web -based interface 
+was developed using Streamlit, an open -source Python framework for deploying interactive 
+machine learning applications. This interface allows users to upload or input patient data, view 
+ 
+49 
+ 
+visual analytics, and generate platelet count forecasts without requiring any additional software 
+installation on the client machine. The app can be accessed through a web browser, making it 
+highly convenient for clinical or academic use. 
+The layout of the interface is structured with a sidebar for user input and a main panel  for 
+displaying outputs: 
+ 
+❖ Sidebar Features: 
+➢ Input fields for patient data: age, sex, date of onset, symptoms (via dropdown), lab  test 
+date, and lab values (Hemoglobin, Platelet count, RBC, Hematocrit). 
+➢ A 'Predict' button  that triggers data preprocessing, feature engineering (e.g., lag and 
+delta features), and prediction. 
+ 
+❖ Main Panel: 
+➢ Displays the predicted platelet counts for the next 3 to 5 days in tabular form. 
+➢ Includes visualizations like a line plot showing platelet trends over time. 
+ 
+The app also incorporates custom styling for a dark -themed dashboard, improving readability 
+and user experience. Background image is subtly faded during prediction output to reduce 
+visual clutter. The symptoms column, which was initially a free -text field, is transformed into 
+an intuitive multi-select dropdown, allowing consistent and user-friendly input. 
+ 
+This interactive platform not only supports data visualization and exploration but also integrates 
+machine learning seamlessly into a clinical decision-support environment.  
+Below are screenshots of the interface: 
+ 
+50 
+ 
+ 
+(a) 
+ 
+(b) 
+ 
+51 
+ 
+ 
+(c) 
+ 
+(d) 
+Fig 25: User Interface of the website 
+ 
+ 
+ 
+52 
+ 
+4.4 Results & Model Accuracy  
+ 
+After the development of the platelet prediction model using machine learning techniques (such 
+as XGBoost, Random Forest and LSTM models), the system was rigorously evaluated to ensure 
+its feasibility, reliability, and predictive accuracy. The model was trained on a cleaned and 
+feature-engineered dataset of 493 dengue -positive patients, with the goal of forecasting platelet 
+counts for the next 3 to 5 days based on early clinical indicators. 
+ 
+Model Evaluation Metrics 
+ 
+The predictive mode lling phase of the project involved training and evaluating multiple 
+machine learning algorithms to forecast platelet counts in dengue patients. The performance of 
+each model was assessed using standard regression metrics, namely Mean Absolute Error 
+(MAE), Root Mean Square Error (RMSE), and the R -squared (R²) score . These metrics were 
+chosen to capture both the absolute magnitude of error and the ability of the model to explain 
+variability in the target variable — platelet count. 
+ 
+Among the models tested, the XGBoost Regressor (XGBRegressor) showed robust 
+performance, achieving an average MAE of 12,875.19, RMSE of 41,974.13, and an R² score of 
+0.76. These results suggest that the model was relatively accurate in estimating the platelet 
+trends while maintaining a good balance between bias and variance. XGBoost benefited 
+significantly from the well-engineered features such as lag values, delta changes in platelet and 
+hematocrit counts, and encoded symptom variables. Its gradient boosting architecture allowed it 
+to model complex, non -linear relationships in the data, which is particularly important in 
+clinical time-series prediction where patient responses can vary widely. 
+ 
+In contrast, the Long Short-Term Memory (LSTM) network — a deep learning model suited for 
+time-series data — produced less favorable results, with an MAE of 69,104.47, RMSE of 
+93,450.42, and a very low R² score of 0.07.  This indicates that the LSTM model struggled to 
+capture the platelet progression trends in the given dataset. The comparatively poor 
+performance of LSTM may be due to the relatively small sample size (per patient time -series), 
+ 
+53 
+ 
+which is often insufficient for training deep learning models that require large volumes of 
+sequential data. Additionally, the variation in test intervals and sparsity in time -series data 
+likely posed challenges for LSTM's memory mechanisms, which depend on regular temporal 
+patterns. 
+ 
+The Random Forest Regressor, on the other hand, demonstrated strong predictive capability, 
+outperforming both XGBoost and LSTM in certain metrics. It achieved an MAE of 14,658.77, 
+RMSE of 33,371.79, and an R² score of 0.83,  making it the best performer in terms of variance 
+explanation. The ensemble nature of the Random Forest allowed it to handle feature interactions 
+and outliers effectively, and it was less sensitive to noise in the data. Despite having a slightly 
+higher MAE than XGBoost, its significantly lower RMSE and superior R² suggest it was more 
+consistent and reliable in predicting sharp drops or rises in platelet counts — a critical factor in 
+managing dengue progression. 
+ 
+Overall, the comparison highlights that tree-based ensemble methods (Random Forest and 
+XGBoost) are more suitable for the nature of this clinical data compared to sequence -based 
+deep learning methods like LSTM. These models offer greater transparency, interpretability, 
+and resilience to the irregularities present in real -world medical datasets. Based on these 
+findings, the Random Forest Regressor was identified as the most feasible model for 
+deployment in the Streamlit -based user interface, followed closely by XGBoost for its balance 
+between speed and accuracy. 
+ 
+4.5 Result Analysis & Discussion  
+ 
+The results obtained from the predictive models reflect both the challenges and strengths of 
+modeling platelet progression in dengue patients using clinical and laboratory data. The 
+variations in performance across models can be attributed to the nature of the dataset, the 
+temporal characteristics of platelet count behavior, and the modeling approach used. 
+ 
+Among all the models tested, the Random Forest Regressor performed the best with an R² score 
+of 0.83, indicating that the model could explain 83% of the variance in the platelet count values. 
+ 
+54 
+ 
+It also achieved a relatively low RMSE of 33,371.79 and MAE of 14,658.77, showing its ability 
+to make precise and consistent predictions. This high performance can be explained by the 
+ensemble nature of the Random Forest algorithm, which builds multiple decision trees and 
+averages their outputs. This reduces overfitting and captures non -linear interactions between 
+features such as lag values, delta changes, and symptoms — all of which are crucial for 
+modeling a complex, fluctuating health indicator like platelet count. 
+ 
+The XGBoost  Regressor also performed well with an R² of 0.76, MAE of 12,875.19, and 
+RMSE of 41,974.13. While slightly less accurate than Random Forest in capturing extreme 
+variations, XGBoost still demonstrated strong performance due to its gradient boosting 
+mechanism, which sequentially corrects the errors of weak learners. XGBoost was especially 
+effective in handling missing data and high -dimensional feature interactions, making it a 
+suitable model for medical datasets with incomplete lab test results. 
+ 
+On the other hand, the LSTM model, which was expected to perform well due to its time -series 
+structure, underperformed significantly with a very low R² score of 0.07, high MAE of 
+69,104.47, and RMSE of 93,450.42. This can be attributed to the limited volume of per -patient 
+time-series data and the irregularity in test intervals. Deep learning models like LSTM typically 
+require large and uniformly spaced temporal datasets to learn sequential patterns effectively. In 
+this project, the sparse and inconsistent time steps across patients likely prevented the LSTM 
+from learning meaningful trends. Additionally, LSTM is more sensitive to overfitting on small 
+datasets, which may have further contributed to its poor generalization. 
+ 
+When compared to findings from the literature review, most existing dengue prediction studies 
+have focused on binary classification tasks such as severity prediction or hospitalization risk 
+using symptoms and static lab values. Few studies have tackled time -series forecasting of 
+platelet counts, especially at the patient level. The models developed in this project — 
+particularly the tree -based ensemble models — demonstrate that daily platelet progression can 
+be modeled effectively using early -day data, which is a novel contribution in the context of 
+dengue disease management. 
+ 
+ 
+55 
+ 
+In conclusion, the Random Forest Regressor emerged as the most reliable and clinically 
+relevant model in this study. Its ability to handle missing data, capture non -linear trends, and 
+provide interpretable outputs makes it suitable for real -world healthcare applications. The 
+comparison also highlights that classical machine learning models, when supported by proper 
+feature engineering, can outperform more complex deep learning models in low -data medical 
+environments. These findings reinforce the importance of data quality, structure, and domain -
+specific feature design in building effective predictive systems for healthcare. 
+ 
+56 
+ 
+Chapter 5: Conclusion 
+ 
+5.1 Summary 
+ 
+This project focused on the development of a data -driven clinical decision support system for 
+predicting platelet count progression in dengue patients, using early clinical data and laboratory 
+results. Recognizing the critical importance of timely platelet monitoring in dengue management, the 
+system aims to assist healthcare professionals by forecasting platelet trends for the upcoming days 
+— particularly during the early stages of the illness when interventions are most crucial. 
+ 
+The project began with comprehensive data preprocessing, where raw clinical data collected from 
+Fr. Muller’s Medical College Hospital was cleaned, standardized, and transformed into a structured 
+dataset. This included handling missing lab results, splitting free -text symptom entries into 
+structured features, engineering time -based variables like lag features and days since onset, and 
+ensuring each patient record was properly indexed and sorted. The innovation here lies in the 
+automated transformation of unstructured medical data into machine learning-ready format, allowing 
+the models to extract meaningful patterns from complex clinical timelines. 
+ 
+A comparative modeling approach was applied, involving XGBoost Regressor, Random Forest 
+Regressor, and LSTM models. The Random Forest Regressor emerged as the most effective, 
+achieving an R² score of 0.83 and low error metrics, making it a practical choice for deployment. 
+Unlike many existing studies that focus only on disease classification, this project introduced a time -
+series regression approach to dengue progression prediction — an area that has received limited 
+attention in research. 
+ 
+One of the standout features of this project is the creation of an interactive, no -installation web 
+interface using Streamlit, which allows users to input patient data and instantly visualize predicted 
+platelet trends. This adds real -world usability to the model, making it accessible for doctors, 
+students, and researchers without requiring any specialized software. 
+ 
+ 
+57 
+ 
+In conclusion, the project combines medical relevance, machine learning, and user -centered design 
+to offer a complete and innovative solution to dengue patient monitoring. Its key achievements 
+include effective data transformation, accurate short -term forecasting of platelet levels, and the 
+development of an intuitive web interface — making it a pioneering effort in predictive analytics for 
+tropical diseases. 
+ 
+5.2 Limitations 
+ 
+While the developed system for predicting platelet counts in dengue patients has shown 
+promising results and practical utility, it is not without limitations. One of the primary 
+constraints is the limited size and diversity of the dataset.  The data used for model training was 
+collected from a single institution — Fr. Muller’s Medical College Hospital — and included 
+493 patients. Although the dataset was rich in clinical detail, its relatively small scale and 
+regional concentration may limit the generalizability of the model to broader populations across 
+different geographical locations, age groups, or clinical settings. 
+ 
+Another limitation lies in the irregularity and sparsity of time -series lab tests. Since platelet and 
+hematocrit readings were not recorded at uniform intervals for all patients, time -based models 
+such as LSTM underperformed. This inconsistency also posed challenges during feature 
+engineering and may have affected the accuracy of the lag and delta features. A more structured 
+and consistent temporal dataset would allow for deeper time -series modeling and improved 
+performance of sequence-based algorithms. 
+ 
+Additionally, the current system does not include certain clinical variables that could further 
+enhance predictive accuracy, such as white blood cell count, liver enzyme levels, comorbidities, 
+or medication history. The model also assumes that early lab values and symptoms alone can 
+predict platelet trends, which may not capture more complex or atypical cases. 
+ 
+From a deployment perspective, while the Streamlit interface is accessible and user -friendly, it 
+remains a prototype-level tool that would require integration with hospital information systems 
+(HIS) and electronic medical records (EMR) to be used in real clinical environments. Features 
+like user authentication, patient data storage, real -time updates, and doctor -specific dashboards 
+are yet to be implemented. 
+ 
+58 
+ 
+These limitations highlight the scope for future enhancements, including expanding the dataset 
+across multiple hospitals, incorporating more comprehensive clinical features, exploring deep 
+learning models with attention mechanisms, and developing a fully integrated clinical tool. 
+Addressing these challenges will not only improve the accuracy and robustness of the model but 
+also move the system closer to real-world clinical deployment. 
+ 
+ 
+ 
+5.3 Future scope 
+The current system presents a significant step toward data -driven monitoring of dengue patients 
+through platelet count prediction. However, there is ample scope for future development that can 
+enhance its clinical relevance, accuracy, scalability, and integration into real -world healthcare 
+settings. 
+ 
+One of the most impactful future enhancements would be the expansion of the dataset, both in 
+volume and diversity. Collecting data from multiple hospitals across different regions would help the 
+model learn from a wider variety of patient profiles and clinical conditions, making predictions more 
+generalizable. A larger dataset would also allow the application of more advanced deep learning 
+models, such as transformer -based architectures or attention -equipped LSTMs, which require 
+substantial data to perform optimally. 
+ 
+Another important direction is the inclusion of additional clinical features such as white blood cell 
+count (WBC), liver function tests (LFTs), vital signs, comorbidities, and treatment history. These 
+variables can offer deeper insights into disease severity and trajectory, improving the model’s ability 
+to capture complex interactions that influence platelet dynamics. 
+ 
+On the deployment side, the Streamlit interface can be upgraded into a more comprehensive, secure, 
+and real-time clinical decision support tool. This could involve: 
+• Integration with hospital EMR/HIS systems 
+• Secure login and role-based access for clinicians 
+• Automatic data upload and real-time prediction 
+ 
+59 
+ 
+• Patient-wise dashboards for trend monitoring 
+• Mobile-friendly interface for accessibility 
+ 
+Furthermore, the system could be extended to predict additional clinical risks, such as the likelihood 
+of bleeding complications or hospitalization needs, making it a more holistic decision -support tool 
+for dengue case management. Real -time alert systems for doctors based on prediction thresholds 
+could also be developed. 
+ 
+Overall, by extending its data sources, refining its features, and improving its deployment pipeline, 
+this system has the potential to evolve from a research prototype into a clinically reliable tool for 
+early dengue risk stratification and personalized patient care. 
+ 
+60 
+ 
+ References  
+[1] K. Phakhounthong, P. Chaovalit, P. Jittamala, S. D. Blacksell, M. J. Carter, P. Turner, K. 
+Chheng, S. Sona, V. Kumar, N. P. J. Day, L. J. White, and W. Pan -ngum, “Predicting the 
+severity of dengue fever in children on admission based on clinical features and laboratory 
+indicators: application of classification tree analysis,” presented at BMC Pediatrics, 2018. 
+ 
+[2] I. Ghosh, S. Gupta, and S. Rana, “Anticipating dengue outbreaks using a novel hybrid 
+ARIMA-ARNN model with exogenous variables,” presented at arXiv preprint 
+arXiv:2312.15270, Dec. 23, 2023. 
+ 
+[3] I. N. Faridah, H. Dania, Y. -H. Chen, W. Supadmi, B. D. Purwanto, M. J. Heriyanto, M. A. 
+Aufa, W.-C. Chang, and D. A. Perwitasari, “Dynamic changes of platelet and factors related 
+dengue haemorrhagic fever: A retrospective study in Indonesian,” presented at Diagnostics 
+(Basel), Apr. 11, 2022. 
+ 
+[4] L. Tanner, M. Schreiber, J. G. H. Low, A. Ong, T. Tolfvenstam, Y. L. Lai, L. C. Ng, Y. S. 
+Leo, L. T. Puong, S. G. Vasudevan, C. P. Simmons, M. L. Hibberd, and E. E. Ooi, “Decision 
+tree algorithms predict the diagnosis and outcome of dengue fever in the early phase of illness,” 
+presented at PLoS Neglected Tropical Diseases, Mar. 12, 2008. 
+ 
+[5] H. Mayrose, G. M. Bairy, N. Sampathila, S. Belurkar, and K. Saravu, “Machine learning-
+based detection of dengue from blood smear images utilizing platelet and lymphocyte 
+characteristics,” presented at Diagnostics, Jan. 6, 2023. 
+ 
+[6] M. Panja, T. Chakraborty, S. S. Nadim, I. Ghosh, and U. Kumar, “An ensemble neural 
+network approach to forecast dengue outbreak based on climatic condition,” presented at arXiv 
+preprint arXiv:2212.08323v2, Dec. 20, 2022. 
+ 
+[7] N. T. Tran, J. Xin, and G. Zhou, “FWin transformer for dengue prediction under climate and 
+ocean influence,” presented at arXiv preprint arXiv:2403.07027, Mar. 10, 2024. 
+ 
+[8] Q. He, Z. You, Q. Dong, J. Guo, and Z. Zhang, “Machine learning for identifying risk of 
+death in patients with severe fever with thrombocytopenia syndrome,” presented at the Frontiers 
+in Microbiology, Sep. 13, 2024. 
+ 
+[9] S. Q. Ong, P. Isawasan, A. M. M. Ngesom, H. Shahar, A. M. Lasim, and G. Nair, 
+“Predicting dengue transmission rates by comparing different machine learning models with 
+vector indices and meteorological data,” presented at Scientific Reports, 2023. 
+ 
+[10] P. Silitonga, A. Bustamam, H. Muradi, W. Mangunwardoyo, and B. E. Dewi, “Comparison 
+of dengue predictive models developed using artificial neural network and discriminant analysis 
+with small dataset,” presented at Applied Sciences, Jan. 21, 2021. 
+ 
+[11] G. M. Hair, F. F. Nobre, and P. Brasil, “Characterization of clinical patterns of dengue 
+patients using an unsupervised machine learning approach,” presented at BMC Infectious 
+Diseases, 2019. 
+ 

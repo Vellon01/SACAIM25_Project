@@ -1,0 +1,341 @@
+  Time Series Forecasting For Predicting Long-Term Gold Price
+
+     Submitted by
+
+Joyston Jose D’Souza 24251325
+MSc. Big Data Analytics
+Aloysius Institute of Management & Information Technology (AIMIT)
+     St Aloysius (DEEMED TO BE UNIVERSITY)
+Mangalore, Karnataka
+
+
+
+
+Submitted in Partial Fulfillment of the Requirements for the Award of the Degree of
+   Master of Science in Big Data Analytics
+
+
+
+Under the guidance of
+
+Dr. Rakesh Kumar B
+Associate Professor (Department of BDA)
+St. Aloysius Institute Of Management and Information Technology (AIMIT)
+St. Aloysius (DEEMED TO BE UNIVERSITY)
+Mangalore, Karnataka
+
+       
+
+
+Submitted to
+
+
+
+
+
+
+2026
+
+
+This is to certify that the project titled
+Time Series Forecasting For Predicting Long-Term Gold Price
+Submitted by
+Joyston Jose D’Souza 24251325
+MSc. Big Data Analytics
+Aloysius Institute of Management & Information Technology (AIMIT)
+                                   St Aloysius (DEEMED TO BE UNIVERSITY)
+Mangalore, Karnataka
+In partial fulfillment of  the requirements for award of degree of  Master of Science in Big Data Analytics of Mangalore St. Aloysius (Deemed to be University)
+During the year
+2026
+
+
+
+Dr. Rakesh Kumar B 
+Associate Professor (Department of BDA),
+Department of  M. Sc (Big Data Analytics),
+AIMIT, 
+St.Aloysius (Deemed To Be University), Mangaluru-575022.
+
+
+
+
+
+Dr. (Fr) Kiran Cotha SJ
+Director,
+AIMIT, St. Aloysius (Deemed To Be University) Mangaluru-575 022.
+
+Dr Hemalatha N
+Dean, School of Information Science and Technology,
+PG Depts. of Information Science and Technology,
+AIMIT,
+St.Aloysius (Deemed To Be University), 
+Mangaluru-575 022.
+
+
+
+Examiners
+1.
+
+
+
+2.
+
+
+
+
+
+CERTIFICATE OF AUTHENTICATED WORK
+
+
+This is to certify that the project report entitled Time Series Forecasting For Predicting Long -Term Gold Price submitted to St. Aloysius Institute of Management and Information Technology (AIMIT), St. Aloysius (Deemed To Be University) in partial fulfilment of the requirement for the award of the degree of MASTER OF SCIENCE IN BIG DATA ANALYTICS (MSc. BDA) is an original work carried out by Mr. Joyston Jose D’souza Register no. 24251325 under my guidance. The matter embodied in this project is authentic and is genuine work done by the student and has not been submitted whether to this University, or to any other University / Institute for the fulfilment of the requirement of any course of study.
+
+
+
+
+
+Signature of the Student
+Date: ___________
+Joyston Jose D’souza
+M.Sc. Big Data Analytics
+AIMIT, St. Aloysius 
+(Deemed to be University)
+Mangaluru-575022.
+Register Number: 24251325
+
+
+
+
+
+
+
+
+
+
+
+
+
+Signature of the Guide
+Date: ___________
+Dr. Rakesh Kumar B
+Associate Professor (Department of BDA),
+Department of M.Sc (Big Data Analytics)
+AIMIT, St. Aloysius 
+(Deemed To Be University), 
+Mangaluru-575022.
+
+
+Project Proposal Report / Synopsis
+
+
+
+for
+
+
+
+
+Time Series Forecasting For Predicting Long-Term Gold Price
+
+
+  Joyston Jose D’Souza
+ 24251325
+MSc. Big Data Analytics
+St. Aloysius Institute Of Management and Information Technology (AIMIT) 
+ST. ALOYSIUS (DEEMED TO BE UNIVERSITY) 
+Beeri, Kotekar, Mangalore - 575022
+
+
+
+Under the guidance of
+Dr.  Rakesh Kumar B
+Associate Professor (Department of BDA)
+St. Aloysius Institute Of Management and Information Technology (AIMIT) 
+ST. ALOYSIUS (DEEMED TO BE UNIVERSITY) 
+Beeri, Kotekar, Mangalore - 575022
+
+
+          Submitted to
+
+
+
+ABSTRACT
+The accurate prediction of gold price is a crucial task for investment decisions and has a considerable impact on investors, policymakers, financial Institutes and countries that depend on mineral resources, yet it remains a significant challenge due to its inherent volatility and complex, non-linear dynamics. Therefore, understanding the future price movement is important for revenue-based planning for investors, companies and also the country. This research focuses on applying Machine Learning techniques for predicting the Gold Price and providing a comparative analysis of the 4 ML algorithms for long-term gold price forecasting namely SARIMA, ARIMA, LINEAR REGRESSION, SVM (kernel used are RBF, Linear and Polynomial). Utilizing a comprehensive dataset of gold prices from August 2000 to August 2025 which was pre-processed by resampling into monthly averages to model long-team trends. All the models were trained on the historical monthly data and employed to generate a 60-month (5-year) forecast, from September 2025 to August 2030.
+Keywords—Time Series Forecasting, SARIMA, ARIMA, LINEAR REGRESSION, SVM 
+
+
+INDEX
+
+
+Introduction
+Overview / Background
+CHAPTER 1
+
+INTRODUCTION
+
+
+OVERVIEW
+
+Gold has always been a key part of the global financial system. Historically, it was used for trade, and today, central banks around the world hold it to manage inflation, secure foreign debts, and show a nation's financial strength. For corporations and individual investors, gold acts as a vital "safe haven" asset, especially during times of political unrest or economic instability, such as pandemics [1]. This dual role as a strategic reserve and a popular investment makes accurately predicting its price a major challenge for both policymakers and investors. The task becomes even harder due to the price's natural volatility and its complex, non-linear nature. Gold prices depend on many factors, such as global economic performance, stock indices like the S&P 500, bond yields, the US Dollar Index, and other commodities [2, 3].
+Due to this complexity, a wealth of research has emerged to find the most reliable forecasting methods [4, 5], sparking a lively debate between traditional econometric models and modern machine learning (ML) techniques [6-8]. Statistical methods like the Autoregressive Integrated Moving Average (ARIMA) and its seasonal variations (SARIMA) are often used because they can model time-series trends [9, 10]. At the same time, ML models, including Support Vector Regression (SVR)—which is known for its effectiveness with non-linear kernels [10]—as well as Linear Regression and other methods [11-15], have gained prominence. The main goal of this research is to predict the price of gold five years from now. While we recognize that market forecasts are always changing, this analysis specifically targets a five-year prediction that will end in August 2030.
+Using a consistent dataset of monthly average gold prices from August 2000 to August 2025, our research tests and evaluates four different models: ARIMA, SARIMA (which includes the S&P 500 and US Dollar Index), Linear Regression, and Support Vector Regression (with linear, poly, and RBF kernels). Our results show a significant difference in the 5-year forecasts for 2025-2030. This analysis implies that while ML models may be powerful, traditional seasonal time-series models were the most effective in capturing the long-term momentum in this historical dataset.
+
+
+Problem Statement 
+
+The accurate prediction of gold price movements is of utmost importance in order to direct informed investment strategies. This has a substantial and direct impact on a wide array of stakeholders, which includes individuals, organizations, governments, and even nations that have economies that are largely dependent on mineral resources.
+
+However, the accurate prediction of gold price movements over long periods of time is a major challenge that arises due to the volatile nature of gold in the market, which has complex and non-linear characteristics. Therefore, it is of utmost importance to have an accurate understanding of the future price movements of gold in order to have effective revenue planning and strategic economic forecasting. There is an urgent need to evaluate the implementation of advanced machine learning strategies to meet the challenges.
+
+
+PROJECT OBJECTIVES
+
+The objective is to utilize machine learning algorithms for long-term forecasting of gold price movements.
+
+To conduct a comparative study of four machine learning algorithms for long-term forecasting, namely, SARIMA, ARIMA, Linear Regression, and Support Vector Machine using RBF, Linear, and Polynomial kernels.
+
+To train the machine learning algorithms using a comprehensive dataset for long-term forecasting, comprising historical gold price movements aggregated at the monthly average level.
+
+To generate a 60-month forecast horizon, ranging from September 2025 to August 2030.
+To evaluate the performance of the predictive models using statistical performance metrics such as RMSE, MAE, and MAPE.
+
+To utilize the trained predictive models using a FastAPI backend for serving purposes, enabling integration with front-end dashboards using Streamlit.
+
+
+CHAPTER 2
+
+
+LITERATURE REVIEW
+Introduction
+Gold price predictions present significant challenges due to their volatility and inability to be predicted in a linear manner over long periods of time. In the past, most forecasting of gold prices used similar methods to predict other commodities, using historical price data as the basis for making an economic or investing decision. These types of models generally worked well in predicting short-term trends; however, due to the complex, non-linear disruptions caused by macroeconomic shifts and worldwide calamities, they were generally less accurate at predicting longer-term results than some competing methods.
+As a result of this paradigm shift, there has been substantial research indicating how the use of advanced machine learning and deep learning architectures helps to mitigate these non-linearities. An example of this is how modern DL models are able to improve their ability to predict very volatile periods by accounting for external shocks, such as global pandemics [1] and how integrating macroeconomic indicators into ML workflows has been shown repeatedly to improve forecasting performance [2]. Additionally, there are new frameworks such as the Gold Nexus Predictor (GNP), which explicitly augment economic indicators and advanced algorithmic learning to fully understand market dynamics through the use of a single model [3].
+A series of holistic investigations into the development of computational finance that occurred during the last 10 years provide evidence for the evolution from simple statistical techniques to complex ML methods, and they have stressed the importance of carefully selecting models based on the attributes of the data being analyzed, as well as the environment in which it is used [4]. The findings of a comparative analysis using rigorous benchmarks to evaluate traditional econometric models and contemporary machine learning models strongly support hybrid methods [6]. For instance, when used together, statistical baseline models and machine learning models produce predictions that are significantly better than either model does when used independently [7].
+The body of research has also built upon the relationship that exists between the use of algorithms to learn from data and the costs which have been represented in traditional models of economics [8] through the utilization of a more advanced type of multivariate-stochastic model that is meant to represent latent ($ latent $) volatility in markets [9]. In practice, many of the techniques that are commonly used for forecasting utilise both a linear model such as ARIMA and a nonlinear mapping technique such as Support Vector Machines (SVM) to find and map the way in which residuals behave within models [10]. In addition, the standard machine learning pipeline methods have consistently demonstrated their effectiveness at revealing latent and less obvious price histories from the past [11] and that these two components (the way the algorithm is designed, and the hyperparameters of the algorithm) are equally important as the dataset used to train an algorithm [12].
+CNN-LSTM Models have done well in capturing temporal patterns from multiple dimensions when processing Deep Temporal Sequences [13]. In the post-2024 literature, researchers have continued to expand on this, writing algorithmic reviews that provide the best outcomes for implementing their models [14]. Many new ways of processing data (including using rolling average representations) have also been documented as having promising outcomes for decreasing extreme daily price volatility before training a model [15].
+
+
+Details of literature review
+Gold price forecasting has attracted considerable attention due to its vital role in investment decisions and economic planning. Mohtasham Khani et al. introduced a deep learning-based method to forecast gold prices, emphasizing the impacts of pandemics on price movements. This study highlighted the need to incorporate external shocks like pandemics into price prediction models for better accuracy [1].
+Kumar et al. utilized machine learning techniques leveraging economic indicators to predict gold prices, demonstrating improved forecasting performance by integrating those indicators into the models [2]. Similarly, Tejasvi et al. proposed the Gold Nexus Predictor (GNP), which integrates machine learning with economic indicators to enhance gold market predictions [3].
+A comprehensive review by Das et al. examined a decade's worth of machine learning approaches for gold price forecasting, outlining the evolution and comparative performance of diverse techniques [4]. Their findings reinforced the comparative strengths of different machine learning methods in addressing the non-linear and volatile characteristics of gold prices.
+Gadage and Baporikar provided a survey on various machine learning methods applied to gold price prediction, emphasizing model selection based on data characteristics and problem context [5]. Their work contributed to understanding the suitability of specific models for this domain.
+Jahnavi et al. conducted a comparative analysis between econometric and machine learning models, advocating a comprehensive approach that harnesses the advantages of both methodologies for enhanced forecasting accuracy [6]. Ahmad et al. further explored this comparison by examining statistical and machine learning models, concluding that hybrid approaches might outperform traditional models in gold price prediction [7].
+Plakandaras et al. addressed the interplay between gold prices and machine learning, analyzing how machine learning algorithms can be used effectively in economic modeling relative to gold price movement [8]. Madziwa et al. introduced a multivariate stochastic model for gold price forecasting, incorporating multiple influencing factors to capture underlying market dynamics [9].
+Makala and Li applied ARIMA and SVM models to predict gold prices, asserting the effectiveness of combining traditional time series methods with machine learning techniques [10]. Aruna et al.  expanded on machine learning applications, demonstrating their utility in uncovering potential price trends in gold markets [11].
+Cohen and Aiche employed machine learning methodologies for gold price forecasting, highlighting the significance of sophisticated algorithm designs in improving prediction accuracy [12]. Earlier, Livieris et al. developed a CNN–LSTM hybrid model to forecast gold prices effectively by capturing temporal patterns in the data [13].
+Jin and Xu focused on machine learning gold price forecasting, reviewing modern algorithms and their implementation outcomes [14]. Recently, Kannan et al. proposed a method using rolling average representation combined with machine learning for gold price prediction, showing promising results in dealing with price volatility [15].
+Overall, the literature reflects a progression from traditional econometric models to advanced machine learning and deep learning techniques, with increasing attention towards hybrid models that incorporate economic indicators and external factors to enhance forecasting accuracy.
+
+Analysis of Related Works
+To help in understanding the proposed use of SARIMA, Linear Regression and SVM techniques to develop a long-term, 5-year forecast; a review of the current literature will be necessary to conduct a critical analysis of the subject. The tables below provide a synthesis of the key advantages and disadvantages, methodological conclusions and results of notable recent research on predicting gold prices.
+
+Table 1: Comparative Analysis of Advantages and Disadvantages
+
+
+Table 2: Model Performance and Methodological Focus
+
+Chapter 3
+
+Materials and Methods
+Introduction
+The purpose of this section is to provide an exhaustive report of the systematic approach adopted for achieving the main goals of this research. This section will detail the entire data science lifecycle, starting at the point where market data was collected and ending at the point where robust forecasting models are implemented. It will provide a complete and thorough account of how the historical financial data used in this research was obtained, how it was structured, and what pre-processing actions were undertaken to ensure that the data produced is accurate. Additionally, this section will provide a thorough account of all of the specialized features that were engineered during the pre-processing phase of the analysis (i.e., how these engineered features were developed to address the unique challenges associated with working with time series data).
+Additionally, EDA was performed on past success to identify the large economic trends, cyclical behaviours in market prices and how volatility is displayed from time to time. Put simply, this chapter gives a step-by-step overview of how the models were designed for forecasting gold's price based on historical financial data. Also explained is the comparison between mechanisms (via Support Vector Machines and SARIMA methods) of how to forecast gold value based on future forecasts. This methodology will allow the reader access to each step in the logic system; however full configurations for hardware/software will exist in using the models. Thus, this methodology provides a foundation from which someone else can create an interactive; more accurate method to forecast gold price from historical financial information.
+
+Data Source and Description
+In order to build an extremely accurate predictive model, one needs to have access to high-quality, reliable and comprehensive data sources. For this research study, the main data source will be the daily historical closing prices of gold, which are expressed in US dollars. These data are originally the result of extracting and collating the raw financial data from Yahoo Finance, one of the world’s largest, most prestigious and most reputable sources of historical financial market data, making certain the data reflect an accurate and correct compilation of the actual global market activity of gold.
+The current dataset has been downloaded and stored in a CSV file called gold_final.csv. The CSV file format has been selected as it is a lightweight file format that is portable and compatible with Python data analysis libraries (e.g. Pandas, NumPy) and also has the ability to handle very large quantities of sequential dated records. The daily dataset contained within the file is in large tabular format where each trading day is represented by a row in the dataset (thousands of rows). While there are many columns in the dataset, there are only 2 primary columns - 'Date' and 'Close' price. The 'Date' column will be used as the official chronological index that is essential for the purpose of time series forecasting, while the target variable for preprocessing, scaling, and finally, forecasting is the daily 'Close' price. The daily close price was selected for the target variable as it represents the price at which all trades for a particular asset settle at the end of the trading session and reflects the total (combined) intra-day volatility and market sentiment in one value at the end of the trading day.
+In order for the models employed in this study to be capable of learning macroeconomic trends over a long-term (as opposed to short-term, random fluctuations), the data consists of a period of time as long as 25 years (from August 2000 through August 2025). The 25-year period of time provides an adequate time span over which to study the effect of global economic cycles (such as periods of very high inflation and periods of severe economic recession, such as the global economic crisis of 2008, the sudden increase in inflation preceding the start of COVID-19, and the market/stock price shock resulting from the COVID-19 pandemic) when training each machine learning algorithm by tying the model being trained to 25 years' worth of data, it provides a greater confidence level that the model is more robust in terms of how it applies that model to future datasets and, therefore, the models employed in this study will be able to make generalizations about future datasets.
+                   
+The following variables are there in the Datasets:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+															Table 2: Model Performance and Methodological Focus
+Data Preprocessing
+A critical phase of financial time-series analysis is data preprocessing, as input data quality, structure, and scale will directly influence the predictive quality of forecasting models. Because financial data is typically noisy with extreme short-term volatility, a detailed preprocessing pipeline has been developed to prepare the raw daily data into a mathematically stable format that can be used with both statistical and machine-learning algorithms. 
+Initial data loading and formatting of structure was accomplished using the pandas library in Python for the iPython Notebook environment. The raw data set was loaded, and the column 'Date' was identified and converted to datetime objects. The 'Date' column was set as the index of the DataFrame, and all time-series models require that the index be based on a DatetimeIndex (a method of identifying each data point quantitatively) to enable the algorithms to determine the sequential and chronological relationship between data points. Finally, the data was ordered (sorted) in chronological order to ensure no future data was inadvertently "leaked" into past observations during the training phase of model development.
+Before performing feature engineering, the overall soundness of the dataset was checked through a thorough analysis of the initial data.
+
+
+                 Figure 1: Dataset Information and Missing Value Analysis
+Figure 1 attached shows that there are 6,273 total chronological data entries (from August 2000 to August 2025) and that all features within those data entries (Close, High, Low, Open, Volume) contain zero missing or null (i.e., complete) values. This indicates that there is full data consistency and continuity across the entire dataset.
+Daily price action is ideal for high-frequency trading, but this research attempts to devise a method of predicting the trajectory of long-term gold prices. Daily "close" prices contain an abundance of stochastic noise (i.e., random fluctuations of the market). In order to simulate macro-economic trends over a longer-term time horizon and to reduce the daily noise, the daily closing price data were resampled to provide monthly average prices. Using the resample("MS").mean() method in pandas (where "MS" means Month Start), the daily closing prices were aggregated into one average price for each of the 12 months. By means of aggregating the daily closing prices into one average for each month, the underlying structural trend of the gold market was identified. All further predictive modelling and mathematical analysis were conducted solely on this monthly average data set. 
+
+Stationarity Testing & Differencing (For SARIMA): Before a SARIMA was fitted, the time series had to be tested for stationarity. It was apparent from the exploratory analysis that there was a substantial upward trend in gold price. The Augmented Dickey-Fuller (ADF) test was used to mathematically establish whether a unit root was present. The first-order differences (diff().dropna()) of the monthly dataset were created in order to meet the strict requirements of the Auto-Regressive Integrated Moving Average methodology by achieving a stabilized mean through eliminating fluctuations in the level of the time series.
+To implement the Support Vector Machine (SVM) algorithm, one of the steps was to represent the time series data in a traditional supervised learning format; therefore, feature engineering was necessary to tabulate each observation, and each observation consists only of the dependent variable (the forecasted price) and contributing independent variables (lagged price observations). To facilitate this, a sliding look-back window was used to create a lagged independent variable feature set; the look-back window was set at six months; therefore, each observation was constructed using the price from each of the previous six months (e.g., t-1, t-2, t-3, t-4, t-5, t-6), and these data served as the input features for SVM algorithm to make use of in forecasting the price of the current month (t). The rolling window method allowed the SVM to learn the local momentum and the historical context of the price leading up to any point in time, thus providing additional support for the forecast.
+Scaling and Normalizing your Features for Support Vector Machines. Distance-based machine learning techniques such as the Support Vector Machine (SVM) are particularly sensitive to both the magnitude and scale of input data. Historical gold prices, for example, may vary considerably in price between $200 and over $2,500; if they were inputted into the SVM in their original form, the SVM's optimization function would have considerable difficulty converging on a solution efficiently. To address this issue, Feature Scaling has been employed via the scikit-learn library's StandardScaler. By removing the mean (so that the transformed values have a mean = 0) and scaling the transformed values so that they have a variance of 1, the features will all contribute equally to the SVM's model fitting process. It should be noted that, in order to prevent any potential data leakage, the StandardScaler was fit to only the training data (X_train); this fit was then applied to the unseen testing data (X_test) in order to perform transformations to give the SVM an unbiased evaluation metric for model performance.
+
+Data Exploration & analysis 
+
+Process Description
+
+Workflow Diagram
+
+Figure 1 depicts the methodological process of the research. The process starts with data collection, which is followed by preprocessing, resampling, and data splitting into training and test sets. The workflow then splits into three concurrent branches to train and test the chosen models: the Support Vector Machine (SVM) branch, employing a lookback period; the Linear Regression (LR) branch, employing a time index feature; and the ARIMA/SARIMA branch, employing the resampled data. The tested models are finally combined for comparison, which forms the ultimate forecasting.
+
+Fig 1. Workflow Diagram
+
+Hardware and Software Requirements
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chapter 4
+Model Selection and Implementation	
+Four model types were chosen for comparison, both classic time series techniques and machine learning methods:
+ARIMA (Autoregressive Integrated Moving Average):
+A basic non-seasonal time series model.
+The best orders (p, d, q) were found with the auto_arima function of the pmdarima package, which performs the search process automatically through statistical tests such as ADF and information criteria (e.g., AIC).
+SARIMA (Seasonal ARIMA):
+An extension of ARIMA that models seasonality explicitly.
+The best non-seasonal (p, d, q) and seasonal (P, D, Q, m) orders were found with pmdarima.auto_arima, where the period of seasonality m was specified as 12 to identify yearly trends in the monthly data.
+Linear Regression:
+A simple regression model as a baseline.
+Implemented with LinearRegression from scikit-learn. A straightforward time index (sequential number that indexes the month) as input feature.
+SVM (Support Vector Machine) / SVR (Support Vector Regression):
+A machine learning algorithm that can learn non-linear relationships. Utilized through SVR from scikit-learn.
+The following three different kernel functions were tried out:
+Linear Kernel: To model linear relationships.
+RBF (Radial Basis Function) Kernel: A popular choice for modeling complicated, non-linear patterns (gamma set to 'scale').
+Polynomial Kernel: To model polynomial relationships (tested with degree=2 and gamma set to 'scale').
+
+Chapter 5
+Conclusion
+
+
+
+REFERENCES
+Mohtasham Khani, M., Vahidnia, S., & Abbasi, A. (2021). A deep learning-based method for forecasting gold price with respect to pandemics. SN Computer Science, 2(4), 335.
+Kumar, R., Moolchandani, J., Shukla, A., Sahu, S., Thada, V., & Chole, V. (2024, December). Machine Learning-Based Prediction of Gold Prices Using Economic Indicators. In 2024 13th International Conference on System Modeling & Advancement in Research Trends (SMART) (pp. 520-524). IEEE.
+Tejasvi, B., Paswan, A. S., Mahajan, J., Singh, V. P., & Saxena, A. (2024, March). Advancing Gold Market Predictions: Integrating Machine Learning and Economic Indicators in the Gold Nexus Predictor (GNP). In 2024 International Conference on Trends in Quantum Computing and Emerging Business Technologies (pp. 1-4). IEEE.
+Das, S., Nayak, J., Kamesh Rao, B., Vakula, K., & Ranjan Routray, A. (2021). Gold price forecasting using machine learning techniques: Review of a decade. Computational Intelligence in Pattern Recognition: Proceedings of CIPR 2021, 679-695.
+Gadage, N. G., & Baporikar, I. U. A Survey on Different Methods of Machine Learning Models  used to Predict the Price of Gold. JOURNAL OF TECHNICAL EDUCATION, 314.
+Jahnavi, M., Bung, P., Nagasubba Reddy, N., & Santosh, K. (2025). Comparing Econometric and 	Machine Learning Models for Gold Price Forecasting: A Comprehensive Approach. In Sustainable Data Management: Navigating Big Data, Communication Technology, and Business Digital Leadership. Volume 2 (pp. 277-291). Cham: Springer Nature Switzerland.
+Ahmad, M., Khan, S., Ahmad, R. W., & Rehman, A. A. (2025). COMPARATIVE ANALYSIS OF STATISTICAL AND MACHINE LEARNING MODELS FOR GOLD PRICE PREDICTION. Journal of 2031963Media Horizons, 6(4), 50-65.
+Plakandaras, V., Gogas, P., & Papadimitriou, T. (2021). Gold against the machine. Computational Economics, 57(1), 5-28.
+Madziwa, L., Pillalamarry, M., & Chatterjee, S. (2022). Gold price forecasting using multivariate stochastic model. Resources Policy, 76, 102544.
+Makala, D., & Li, Z. (2021, February). Prediction of gold price with ARIMA and SVM. In Journal of Physics: Conference Series (Vol. 1767, No. 1, p. 012022). IOP Publishing.
+Aruna, S., Umamaheswari, P., Sujipriya, J., & Umamaheswari, R. (2021). Prediction of potential gold prices using machine learning approach. Annals of the Romanian Society for Cell Biology, 25(4), 1385-1396.
+Cohen, G., & Aiche, A. (2023). Forecasting gold price using machine learning methodologies. Chaos, Solitons & Fractals, 175, 114079.
+Livieris, I. E., Pintelas, E., & Pintelas, P. (2020). A CNN–LSTM model for gold price time-series forecasting. Neural computing and applications, 32(23), 17351-17360.
+Jin, B., & Xu, X. (2025). Machine learning gold price forecasting. International Journal of Management Science and Engineering Management, 20(2), 273-285.
+Kannan, R., Andres, F., Muthu, K. S., & Anutariya, C. (2024, May). Predicting Gold Prices with Rolling Average Representation and Machine Learning. In 2024 1st International Conference on Innovative Engineering Sciences and Technological Research (ICIESTR) (pp. 1-5). IEEE.
+

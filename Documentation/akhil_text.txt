@@ -1,0 +1,1581 @@
+1 
+ 
+ 
+PLASPRED – COMPUTATIONAL PREDICTION TOOL FOR IDENTIFYING 
+PLASTIC-DEGRADING MICROBES 
+ 
+Submitted by 
+AKHIL WILSON 
+192003 
+MSc. Big Data Analytics 
+AIMIT, ST ALOYSIUS COLLEGE (AUTONOMOUS) 
+MANGALURU, KARNATAKA 
+ 
+ 
+ 
+Submitted in Partial Fulfillment of the Requirements for the Award of the Degree of 
+Master of Big Data Analytics 
+ 
+ 
+Under the guidance of  
+ 
+Dr. Hemalatha N 
+Dean, School of IT 
+AIMIT, St. Aloysius College, 
+Mangaluru-575 022. 
+ 
+Submitted to 
+ 
+ 
+ 
+ 
+ 
+ 
+ALOYSIUS INSTITUTE OF MANAGEMENT AND INFORMATION TECHNOLOGY 
+(AIMIT) 
+ST ALOYSIUS COLLEGE (AUTONOMOUS) 
+MANGALURU, KARNATAKA 
+ 
+ 
+2021 
+  
+
+2  
+      ALOYSIUS INSTITUTE OF MANAGEMNT AND INFORMATION TECHNOLOGY  ST ALOYSIUS COLLEGE (AUTONOMOUS) MANGALORE, KARNATAKA  CERTIFICATE This is to certify that the project titled   PLASPRED – COMPUTATIONAL PREDICTION TOOL FOR IDENTIFYING PLASTIC-DEGRADING MICROBES  Submitted by AKHIL WILSON 192003 MSc. Big Data Analytics  AIMIT, ST ALOYSIUS COLLEGE (AUTONOMOUS) MANGALURU, KARNATAKA  In partial fulfillment of the requirements for award of degree of Master of Big Data Analytics of Mangalore University During the year 2021   Dr. Hemalatha N Dean, School of IT PG Dept of Information Technology, AIMIT, St. Aloysius College,  Mangaluru-575 022.  Rev. Dr. Melwyn Pinto SJ  Director,  AIMIT, St. Aloysius College  Mangaluru-575 022.      Dr. Hemalatha N Dean, School of IT PG Dept of Information Technology,  AIMIT, St. Aloysius College,  Mangaluru-575 022. Examiners 1. Mrs. Shubharekha  2. Mrs. Laveena Crasta     
+
+3  
+  CERTIFICATE OF AUTHENTICATED WORK  This is to certify that the project report entitled PlasPred – Computational Prediction Tool for Identifying Plastic-Degrading Microbes submitted to Aloysius Institute of Management and Information Technology (AIMIT), St Aloysius College, Mangalore affiliated to Mangalore University in partial fulfilment of the requirement for the award of the degree of MASTER OF BIG DATA ANALYTICS is an original work carried out by Mr. Akhil Wilson Register no. 192003 under my guidance. The matter embodied in this project is authentic and is genuine work done by the student and has not been submitted whether to this University, or to any other University / Institute for the fulfilment of the requirement of any course of study.                                      Signature of the Student:                 Date:31-05-2021                 Akhil Wilson                 II M.Sc. Big Data Analytics                 AIMIT, St. Aloysius College                 Mangaluru-575 022                 Register Number: 192003     Signature of the Guide: Date:31-05-2021 Prof. Dr. Hemalatha N Dean, School of IT PG Depts. of Information Technology,  AIMIT, St. Aloysius College,  Mangaluru-575 022.              
+
+4 
+ 
+ 
+ 
+ 
+ 
+  PROJECT PROPOSAL REPORT / SYNOPSIS 
+ 
+Project Proposal Report / Synopsis  
+for 
+ 
+PLASPRED – COMPUTATIONAL PREDICTION TOOL FOR IDENTIFYING 
+PLASTIC-DEGRADING MICROBES 
+ 
+ 
+AKHIL WILSON 
+192003 
+MSc. Big Data Analytics 
+St. Aloysius Institute of Management and Information Technology (AIMIT) 
+Mangalore 
+ 
+ 
+ 
+Under the guidance of  
+Dr. Hemalatha N 
+Dean, School of IT 
+AIMIT, St. Aloysius College, 
+Mangaluru-575 022. 
+ 
+ 
+Submitted to 
+ 
+ 
+ 
+ 
+ 
+ALOYSIUS INSTITUTE OF MANAGEMENT AND INFORMATION 
+TECHNOLOGY (AIMIT) 
+ST ALOYSIUS COLLEGE (AUTONOMOUS) 
+MANGALORE, KARNATAKA 
+ 
+ 
+ 
+ 
+
+5 
+ 
+ 
+ 
+ABSRACT 
+Plastic pollution has become one of the most pressing environmental issues, as rapidly increasing 
+production of disposable plastic products overwhelms the world’s ability to deal with them. This 
+paper predicts the plastic degrading microbes with help of machine learning algorithms. Here we 
+used amino acid count in the microbial sequence for the study. Also, used the different properties of 
+the microbes including Amino acid ratio, count of the dipeptide, hydrophobicity, hydrophilicity, 
+Acidity and basicity. To develop the computational prediction tool, three different applications 
+were used namely WEKA, SVMlight and Sci-kit learn. We used all these features and with the help 
+of the machine learning classification algorithms such as Random Forest, Support Vector 
+Machine(SVM), KNN, Decision Tree(DT) in each of these application tools. For WEKA we 
+obtained best accuracy of 100% in j48, IBK, SMO, MLP classifiers, in SVMlight Support vector 
+classifier with kernels linear and polynomial obtained an accuracy of 100% and Random forest 
+classifier obtained best accuracy of 99.13% in Sci-kit learn. Amino acid count feature gave best 
+results in all the application tools.  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+6 
+ 
+ 
+                                                   INDEX                                                                                              
+1.  Introduction    
+ 1.1 Overview / Background 7 
+ 1.2 Problem statement 9 
+ 1.3 Project Objectives 9 
+2.  Literature Review 10 
+3.  Materials and Method  
+ 3.1 Dataset 14 
+ 3.2 Features 14 
+ 3.3 Platforms used 15 
+ 3.4 Performance and evaluation 36 
+ 3.5 Work flow diagram 38 
+4.  Result 39 
+ 4.1 Weka 39 
+ 4.2 SVM Light 51 
+ 4.3 
+4.4 
+Sklearn 
+Streamlit 
+54 
+78 
+5.  Conclusion   
+ 5.1 Summary 80 
+ 5.2 Limitations 80 
+ 5.3 Future scope 80 
+7 
+ 
+  References  81 
+CHAPTER 1 
+INTRODUCTION 
+1.1  OVERVIEW 
+Society has become completely dependent on plastic, yet we rarely stop and wonder how this 
+material might be affecting our health. Toxic additives are often added to plastic in order to 
+improve its properties. Many of these additives do not bind to the chemical chain of plastic which 
+means they can be released in the environment when exposed to various atmospheric conditions. 
+These additives can be absorbed by the skin, evaporate into the air or absorbed via the food or 
+drinks we consume. It is important to know exactly what additives are used and take steps to avoid 
+them to reduce the harmful effects of plastic on human health as all of them are highly toxic in 
+nature. 
+Scientists have found micro plastic in 114 marine species and almost one-third of these 
+end up on our plates. Some of the chemicals added to plastic to increase its performance are 
+considered endocrine disruptors – chemicals that affect normal hormone function – while some 
+retardants may Studying the impacts of micro plastics on human health is very challenging. Today 
+we know very little about what levels of contamination might negatively affect us. The United 
+Nations Food and Agriculture Organization stated – following recent research – that people are 
+likely to consume only negligible amounts of micro plastics from fish. Nonetheless, scientists 
+remain concerned about the human health impacts of marine plastics. More research needs to be 
+carried out before we are truly able to understand the implications of consuming contaminated 
+fish. But it’s quite clear that this cannot possibly be a good addition to our diets. With every passing 
+day, as we consume more contaminated seafood, plastic pollution affects human health, even if 
+these effects have not manifested just yet. 
+Plastic is nothing but a polymeric material. The Plastic pollution has become one of 
+the most stressing environmental issue, as rapidly increasing production of disposable plastic 
+products overwhelms the world’s ability to deal with them. We cannot think a life without 
+plastic.  Plastics revolutionized medicine with life-saving devices, made space travel possible, 
+lightened cars and jets—saving fuel and pollution—and saved lives with helmets, incubators, 
+and equipment for clean drinking water. But in another side it makes a lot of environmental 
+pollution So it’s difficult or we can say that practically it is not possible to avoid plastic 
+completely from our daily life. The only solution to control the plastic pollution is degrading the 
+8 
+ 
+plastic products rather than throwing it into the surroundings. Using the proper management, we 
+can reduce the pollutions in the environment that the plastic creates. 
+So in this research paper by using the machine learning techniques we introducing the 
+microbes which helps to degrade the plastic. We can determine which are the microbes helps to 
+degrade the plastic. Here we used the different properties of the microbes include its Amino acid 
+sequences, Amino Acid counts, count of the dipeptide, hydrophobicity, hydrophilicity, Acidity 
+and basicity. By make use of all these features and with help of the machine learning 
+classification algorithms such as Random Forest, Support Vector Machine(SVM), KNN, 
+Decision Tree(DT) which is used for prediction in a context of supervised classification. Here we 
+used only the binary classifiers to find out the weather the given sequence is positive (able to 
+degrade the plastic) or negative (not able to degrade the plastic).It is very important to detect which 
+are the amino acids present in the microbes sequence. There are 20 amino acids present in all 
+microbial sequence such as alanine(A), Arginine(R), Asparagine(N), Aspartic acid(D), 
+Cysteine(C), Glutamine(Q), Glutamic acid(E), Glycine(G), Histidine(H), Isoleucine(I), 
+Leucine(L), Lysine(K), Methionine(M), Phenylalanine(F), Proline(P), Serine(S), Threonine(T), 
+Tryptophan(W), Tyrosine(Y), Valine(V). 
+Biodegradation is defined as the process in which organic substances are broken down 
+by living organisms. It is expected to be the major mechanism of loss for most chemicals released 
+into the environment. Biodegradation is the ability of microorganism to influ-ence abiotic 
+degradation through physical, chemical, or enzymatic action . Microorganisms are involved in the 
+degradation and deterioration of both syn-thetic and natural polymers . The polymers are not 
+directly utilized by microorganisms where most of the biochemical processes takes place. The 
+degradation of plastics is a very slow process. Initially it is initiated by environmental factors, 
+which include temperature, pH, and UV. In order to use such materials as a carbon and energy 
+source, microorganisms have developed a special strategy. 
+Microorganisms such as bacteria and fungi are involved in the degradation of plastics. 
+The microorganisms that are responsible for biodegradation differ from each other and have their 
+own optimal growth conditions. Biodegradation is generally considered as con-sisting of both 
+enzyme-catalyzed hydrolysis and nonenzymatic hydrolysis .During degradation, exoenzymes 
+from microorganisms break down complex polymers yielding short chains or smaller molecules, 
+for example, oligomers, dimers, and monomers, that are smaller enough (water soluble) to pass 
+the semi-perme-able outer bacterial membranes and then to be utilized as carbon and energy 
+sources. This initial process of polymer breaking down is called depolymerization. The deg-
+radative pathways associated with polymer degradation are often determined by the envi-
+9 
+ 
+ronmental conditions (Figure 12.4). The complete decomposition of a polymer produces organic 
+acids, CO2, CH4, and H2O . The biological degradation of polymeric substances is a complex 
+process involving several subsequent steps induced by the action of enzymes. The most important 
+type of enzymatic polymer cleavage reaction is hydrolysis. The bonds such as glycosidic, ester, 
+and peptide linkages are subjected to hydrolysis through nucleophilic attack on the carbonyl carbon 
+atom. Generally, the biological degradation of polymeric substances isinuenced by the presence 
+of enzymes and microorganisms, biotic availabil-ity of the polymeric structure and appropriate 
+abiotic factors. 
+Based on the study that we have done using machine learning in these microbial 
+sequence it is found that we can classify the microbes into plastic degrading or plastic non 
+degradable based on the count of amino acids present in the microbial sequence.Here in this 
+research work we are classifying the microbes into positive(plastic degrading) and negative(plastic 
+non degrading).To perform this we have taken 9000 positive sequence of degradable microbes and 
+6000 Amino acid sequence of plastic non degrading microbes.we combined the positive and the 
+negative sequence and then created a dataframe using the python programing.The whole machine 
+learning study starts from this sequence and from these sequence we created 7 features out of this 
+or we can say that created 7 different features as 7 dataframes and the preprocess the data and then 
+applied classification algorithms. 
+ 
+1.2. PROBLEM STATEMENT 
+It is critical to detect plastic degradable microbes from the environment. Conventional technique for 
+detecting plastic degradable microbes is time consuming and costly. By analyzing the different 
+properties associated with microbial sequence, we are able to predict the plastic degradable 
+microbes. Hence it is important to build a model for detecting plastic degradable microbes.  
+1.3 PROJECT OBJECTIVES 
+ To study the different features of microbes 
+ To create different models using different classifiers and different features for each application 
+ Comparison of results of different features in order get best feature for each application and each 
+classifier 
+ List out the best feature and best classifier for each application 
+ Model deployment using Streamlit 
+ 
+10 
+ 
+ 
+ 
+CHAPTER 2 
+2. LITERATURE SURVEY 
+Due to plastic’s resilience against degradation and its proliferation in industry, the issue of plastic 
+pollution has evolved to become a threat to global ecology. Plastic pollution arises from both 
+terrestrial and marine sources. The continual stream of pollutant plastic is maintained via two 
+means: purposefully, through illegal or inappropriate dumping of domestic and industrial refuse; 
+and inadvertently, through poorly contained static and transported waste. Directed by the 
+elements,land-based plastic debris migrates to waterways, where it is further added to by the 
+disposal or loss borne from marine vessels and offshore petroleum platforms. Such pollution 
+results in a number of deleterious repercussions. 
+G.lear et al., in their research paper they propose a best-practice workflow for isolating and 
+reporting plastic-degrading taxa from diverse environmental microbiomes, which should include 
+multiple lines of evidence supporting changes in polymer structure, mass loss, and detection of 
+presumed degradation products, along with confirmation of microbial strains and enzymes (and 
+their associated genes) responsible for high molecular weight plastic polymer degradation [1]. 
+Such approaches are necessary for enzymatic degraders of high molecular weight plastic polymers 
+to be differentiated from organisms only capable of degrading the more labile carbon within 
+predominantly amorphous plastics, plastic monomers, additives or fillers. they studied on the 
+degradable microbes in this work ,they studied about plastic in the environment, disposel method, 
+impact of  bacteria in degrading plastic. Plastic accumulation, particularly in the world’s oceans, 
+is of increasing environmental concern. One of the major components of plastic waste is 
+poly(ethylene terephthalate) (PET), a polymer frequently used in many applications, including 
+textiles and food packaging. PET is highly resistant to environmental biodegradation and, thus, 
+causes many and varied environmental concerns associated with its accumulation, including, but 
+not limited to, absorption and concentration of organic pollutants, hazardous effects on marine 
+wildlife and dissemination of potentially invasive species to new environments. To date, only three 
+plastic disposal methods are routinely used on a large scale: landfill, incineration and recycling. 
+Each technique has disadvantages and drawbacks. Landfill and incineration both lead to the release 
+of dangerous secondary pollutants into the environment, and landfill also has an additional 
+drawback in the requirement of large portions of land space. Recycling addresses the 
+environmental concerns of landfill and incineration, however, the process is relatively inefficient 
+and the diminishing quality of the polymer yielded is a limiting factor. The process is also less 
+11 
+ 
+cost-effective, and subsequently, there is less incentive for investment in recycling facilities. 
+Biodegradation is an attractive option for environmentally friendly and efficient disposal of plastic 
+waste. To date, no protocol has yet been developed to feasibly dispose of PET by biodegradation 
+on a commercial scale; however, substantial research is still being conducted in the field of 
+biodegradation of polymers, and given the vast metabolic potential of microorganisms, it is 
+expected that it is simply a matter of time before viable biodegradation processes are developed. 
+Rajendran Sangeetha et al., concluded that plastics are very useful in our day-to-day life to 
+meet our desired needs [2]. Due to its good quality its use is increasing day by day and its 
+degradation is becoming a great threat. In the natural environment, different kinds of 
+microorganisms play an important role in various steps involved in the degradation of plastics. 
+Studying the synergism between those microorganisms will give an insight for future efforts 
+toward the biodegradation of these materials. The plastic materials have high-molecular weight 
+and have hydrophobic surfaces making them difficult for the microorganisms to form stable 
+biofilms and degrade them into small molecular oligomers. The screening of soil microorganisms, 
+isolating microorganisms from marine environment and plastic waste dump site could lead to new 
+explored strains, with superior performance. Various plastic-degrading methods are available but 
+the cheapest, eco-friendly acceptable method is degradation using microbes. The microbe releases 
+the extracellular enzymes to degrade the plastic but the detailed characterization of these enzymes 
+is still needed to be carried out. Utilization of molecular techniques to detect specific groups of 
+microorganisms involved in the degradation process will allow a better understanding of the 
+organization of the microbial community involved in the attack of materials. The characterization 
+of efficient plastic-degrading microbes at molecular level is still not available, so research should 
+be focused in the field of genomics and proteomics, which could speed up the degradation. 
+Haben fesseha and Fasil abebe in their paper they said that Plastics are polymers of higher 
+molecular mass of synthetic or semi-synthetic organic solids used as inputs for industries [3]. Over 
+the last few years, the need for biodegradable plastics has led to extended significance due to the 
+extreme use of plastics and increasing pressure being positioned on to be had capacities for plastic 
+waste disposal. Lack of degradability and the closing of landfill sites as well as growing water and 
+land pollutant problems have caused the situation about plastics. Plastics are causing great 
+difficulty in environmental problems and consequently, this desires manufacturers to synthesize 
+materials that do not have an impact on the environment. The use of microorganisms in the 
+surrounding to metabolize the molecular shape of plastic materials to produce an inert humus-like 
+material and this is much less dangerous to the surroundings, furthermore, expertise their 
+interaction and the biochemical adjustments they undergo are tremendously essential. In addition, 
+12 
+ 
+the use of bio-active compounds coated with swelling materials ensures that once it is far mixed, 
+with heat and moisture, they make bigger the plastics molecular structure and permit the bio-lively 
+compounds to metabolize and neutralize the plastic. Thus, this overview article is revised to inspire 
+and make an impact on the importance of microorganisms on biodegradation plastic substances. 
+ Afreen Bakht et al., they said that the plastic pollution is threatening the environment 
+because it has very slow degradation rate and high usage in regular activities [4]. The present study 
+aims at the isolation of novel microorganisms that would assist faster degradation process of 
+polyethylene. The waste samples were collected from diff erent landfi lls and dumpsites. Out of 
+forty samples, eight samples were found to degrade polythene strips in liquid medium. Further 
+screening of these samples showed that two strains of microbes had high potential for polythene 
+degradation. Biochemical tests and ribotyping were performed for characterization of isolated 
+bacteria. Resultantly, two novel bacterial strains were identifi ed named; Bacillus 
+wudalianchiensis_UMT (2A) and Pseudomonas aeruginosa_UMT (6). Analysis of these microbes 
+further revealed that Bacillus wudalianchiensis_UMT and Pseudomonas aeruginosa_UMT have 
+capability to degrade 6.6% and 4.8% polyethylene respectively. So, the results disclosed that these 
+bacteria have great potential to degrade polythene in less time as compare to natural degradation 
+process and can contribute to reduce pollution from our environment. 
+ Ziheng Cui et al., they said that the growing amount of plastic solid waste (PSW) is a 
+global concern  [5]. Despite increasing efforts to reduce the residual amounts of PSW to be 
+disposed of through segregated collection and recycling, a considerable amount of PSW is still 
+landfilled and the extent of PSW ocean pollution has become a worldwide issue. Particularly, 
+polyethylene (PE) and polystyrene (PS) are considered as notably recalcitrant to biodegradation 
+due to the carbon-carbon backbone that is highly resistant to enzymatic degradation via oxidative 
+reactions. The present research investigated the catalytic mechanism of P450 monooxygenases by 
+quantum mechanics to determine the bio-catalytic degradation of PE or PS. The findings indicated 
+that the oxygenase-induced free radical transition caused the carbon-carbon backbone cleavage of 
+aliphatic compounds. This work provides a fundamental knowledge of the biodegradation process 
+of PE or PS at the atomic level and facilitates predicting the pathway of plastics’ biodegradation 
+by microbial enzymes. 
+Chan and Allison said that one possible implementation of using bacteria to clean plastic 
+waste is through a controllable bioremediation system [6]. One suggested bioremediation system 
+in Indonesia involved the use of a whole-cell biocatalyst that can degrade PET component in 
+plastic waste. In their devised plastic degradation system, researchers could use synthetic bacteria 
+to degrade plastic. Because the plastic products are harmful to bacteria, they could design the 
+13 
+ 
+bacteria to use the waste as an energy source instead, and continue growth. Therefore, there would 
+be no need to input more material, as the bacteria are self-sustaining, unlike chemical pools or 
+furnaces. Plastic is a critical harm to our ecosystem. Production of plastic harms workers, slow 
+degradation of plastic in the ocean risk sea animals’ lives, and current methods of recycling plastic 
+can be improved to reduce energy costs. Recent discoveries in plastic-degrading bacteria are a hint 
+to cleaning up the plastic in the ocean. Bacteria can be self-sustaining on plastic, and can also be 
+modified to produce less harmful waste. While modifications in the bacteria can make a better 
+system to degrade the plastic, there has to be more active participation 
+From this it is understood that detecting a plastic degrading microbe is important nowadays to 
+protect our life as well as to save our environment. It is necessary to have knowledge about the 
+plastic degrading microbes in order save our mother nature. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+14 
+ 
+ 
+ 
+CHAPTER 3 
+3. MATERIAL METHODS AND METHODOLOGY 
+3.1. DATASET 
+The entire dataset is taken from databases such as NCBI and UniprotKB. The dataset is all about 
+the plastic degrading microbes. The microbial sequence contains the amino acids. There are 20 
+types amino acids present in each of the microbial sequence. The dataset contains 9000 positive 
+sequence and 6000 negative sequences. We combined the positive and the negative microbial 
+sequence in order to create the prediction model 
+Amino acid sequences, Amino Acid counts, count of the dipeptide, hydrophobicity, 
+hydrophilicity, Acidity and basicity. 
+3.2. FEATURES 
+3.2.1. Amino acid count 
+ There are hundreds of amino acids found in nature, only about 20 amino acids are needed to make 
+all the proteins found in the human body and most other forms of life. They are Alanine(A), 
+Arginine(R), Asparagine(N), Aspartic acid(D), Cysteine(C), Glutamine(Q), Glutamic acid(E), 
+Glycine(G), Histidine(H), Isoleucine(I), Leucine(L), Lysine(K), Methionine(M), 
+Phenylalanine(F), Proline(P), Serine(S), Threonine(T), Tryptophan(W), Tyrosine(Y), Valine(V). 
+3.2.2. Dipeptide count 
+Two Amino acids linked by a peptide bond become what is called a dipeptide. A chain of 
+molecules linked by peptide bonds is called a polypeptide. A protein is made up of one or more 
+polypeptide chains. 
+3.2.3. Amino acid ratio 
+It is the ratio of each amino acids and total number of amino acids in a microbial sequence. 
+3.2.4. Acidic 
+Acidity is the count of  Aspartic acid(D) and Glutamic acid(E) in the microbial sequence. 
+3.2.5. Basicity 
+Basicity is the count of  Lysine(K), Histidine(H), Arginine(R) in the microbial sequence.  
+15 
+ 
+ 
+3.2.6. Hydrophobicity 
+Hydrophobicity is the count of Alanine(A), Glycine(G), Isoleucine(I), Leucine(L), 
+Methionine(M), Phenylalanine(F), Proline(P), Tryptophan(W), Valine(V) in the microbial 
+sequence. 
+3.2.7. Hydrophilic 
+Hydrophilic is the count of Serine(S), Threonine(T), Asparagine(N), Cysteine(C), Tyrosine(Y), 
+Glutamine(Q) in the microbial sequences. 
+3.3 PLATFORMS USED 
+ 3.3.1 WEKA  
+ 3.3.2 SVM LITE 
+ 3.3.3 SCIKITLEARN(PYTHON) 
+ 3.3.4 STREAMLIT 
+3.3.1 WEKA 
+WEKA - an open source software provides tools for data preprocessing, implementation of several 
+Machine Learning algorithms, and visualization tools so that you can develop machine learning 
+techniques and apply them to real-world data mining problems. What WEKA offers is summarized 
+in the following diagram. Weka is a very good platform for the prediction model. Algorithms can 
+either be applied directly to a dataset or called from your own Java code. Weka contains tools for 
+data pre-processing, classification, regression, clustering, association rules, and visualization. It is 
+also well-suited for developing new machine learning schemes. 
+3.3.1.1. Pre-processing 
+We used python environment to create the weka file directly from the python environment. Using 
+python ,The training and testing weka files is loaded and then the classification algorithm is 
+applied. 
+import arff 
+arff.dump('Acid_amino_count_positives.arff' 
+      , df1.values 
+      , relation='relation name' 
+16 
+ 
+      , names=df1.columns) 
+3.3.1.2. Algorithms 
+ SMO 
+ MLP 
+ J48 
+ IBK 
+ SMO 
+SMO refers to the specific efficient optimization algorithm used inside the SVM implementation, 
+which stands for Sequential Minimal Optimization. The C parameter, called the complexity 
+parameter in Weka controls how flexible the process for drawing the line to separate the classes 
+can be. he sequential minimal optimization algorithm (SMO) has been shown to be an effective 
+method for training support vector machines (SVMs) on classification tasks defined on sparse data 
+sets. SMO differs from most SVM algorithms in that it does not require a quadratic programming 
+solve 
+ MLP  
+Trains a multilayer perceptron with one hidden layer using WEKA's Optimization class by 
+minimizing the given loss function plus a quadratic penalty with the BFGS method. Note that all 
+attributes are standardized, including the target. There are several parameters. The ridge parameter 
+is used to determine the penalty on the size of the weights. The number of hidden units can also 
+be specified. Note that large numbers produce long training times. Finally, it is possible to use 
+conjugate gradient descent rather than BFGS updates, which may be faster for cases with many 
+parameters. To improve speed, an approximate version of the logistic function is used as the default 
+activation function for the hidden layer, but other activation functions can be specified. In the 
+output layer, the sigmoid function is used for classification. If the approximate sigmoid is specified 
+for the hidden layers, it is also used for the output layer. For regression, the identity function is 
+used activation function in the output layer. Also, if delta values in the backpropagation step are 
+within the user-specified tolerance, the gradient is not updated for that particular instance, which 
+saves some additional time. Parallel calculation of loss function and gradient is possible when 
+multiple CPU cores are present. Data is split into batches and processed in separate threads in this 
+case. Note that this only improves runtime for larger datasets. Nominal attributes are processed 
+using the unsupervised NominalToBinary filter and missing values are replaced globally using 
+ReplaceMissingValues. 
+17 
+ 
+ 
+ IBK 
+In Weka this algorithm is called IBk (Instance Based Learner). ... The IBk algorithm uses a 
+distance measure to locate k “close” instances in the training data for each test instance and uses 
+those selected instances to make a prediction. 
+Steps to be followed is 
+1. Download Weka and Install. Visit the Weka Download page and locate a version 
+of Weka suitable for your computer (Windows, Mac, or Linux). ... 
+2. Start Weka 
+3. Open the data/iris. arff Dataset. ... 
+4. Select and Run an Algorithm. ... 
+5. Review Results. 
+ J48 
+Quinlan's C4.5 algorithm actualizes J48 to create a trimmed C4.5 decision tree. Every aspect of 
+the information is to split into minor subsets to base on a decision. J48 look at the standardized 
+data gain that really the results the split the information by choosing an attribute. To summarize, 
+the attribute extreme standardized data gained is utilized. The minor subsets are returned by the 
+algorithm. The split strategies stop if a subset has a place with a similar class in all the instances. 
+J48 develops a decision node utilizing the expected estimations of the class. J48 decision tree can 
+deal with particular characteristics, lost or missing attribute estimations of the data and varying 
+attribute costs. Here accuracy can be expanded by pruning 
+Quinlan's C4.5 algorithm actualizes J48 to create a trimmed C4.5 decision tree. Every aspect of 
+the information is to split into minor subsets to base on a decision. J48 look at the standardized 
+data gain that really the results the split the information by choosing an attribute. To summarize, 
+the attribute extreme standardized data gained is utilized. The minor subsets are returned by the 
+algorithm. The split strategies stop if a subset has a place with a similar class in all the instances. 
+J48 develops a decision node utilizing the expected estimations of the class. J48 decision tree can 
+deal with particular characteristics, lost or missing attribute estimations of the data and varying 
+attribute costs. Here accuracy can be expanded by pruning  
+ Stage 1: The leaf is labeled with a similar class if the instances belong to similar class. 
+18 
+ 
+ Stage 2: For each attribute, the potential data will be figured and the gain in the data will be taken 
+from the test on the attribute.  
+Stage 3: Finally, the best attribute will be chosen depending upon the current selection parameter. 
+Limitations of J48 Algorithm  
+Despite the fact that J48 one of the well-known algorithms, there are a few shortcomings of this 
+algorithm. A few limitations of J48 are discussed below. Empty Branches Constructing tree with 
+significant value is one of the important steps for rule generation by J48 algorithm. In our research, 
+we have come out with many nodes with zero values or very close to that. But these values don’t 
+contribute to create or help to create any class for classification task. Instead, it makes the tree 
+wider and still complicating. Insignificant Branches Number of chosen distinct attributes produces 
+the same number of potential divisions to build a decision tree. But the fact is, not all of them are 
+significant for classification task. These least important branches not only decrease the usability 
+of decision trees but also bring on the problem of over fitting.  Over Fitting Over fitting happens 
+when algorithm display gets information with exceptional attributes. This causes many 
+fragmentations in the process distribution. Statistically unimportant nodes with least examples are 
+known as fragmentations. Usually, J48 algorithm builds trees and grows its branches ‘just deep 
+enough to perfectly classify the training examples’. This approach performs better with noise free 
+data. But most of the time this strategy over fits the training examples with noisy data. At present 
+there are two strategies which are widely used to bypass this over fitting in decision tree learning. 
+Those are: 
+  If tree grows taller, stop it from growing before it reaches the maximum point of accurate 
+classification of the training data. 
+  Let the tree to over-fit the training data then post-prune tree. Yet, nothing of those is perfect 
+solution of this problem.  
+3.3.2 SVM LITE 
+This machine learning tool is mainly a tool which deals with a system developed using a Support 
+vector machine algorithm. The data was trained  using 3 kernels i.e. the linear kernel, the 
+polynomial kernel and the Radial basis function Kernel. The results were obtained using the 
+kernels by testing the data and the best features was chosen based on the accuracy scores that were 
+calculated. 
+Kernels used: 
+19 
+ 
+ Linear Kernel: Linear Kernel is used when the data is Linearly separable, that is, it can be 
+separated using a single Line. It is one of the most common kernels to be used. It is mostly 
+used when there are a Large number of Features in a particular Data Set. 
+ Polynomial : In the polynomial kernel, we simply calculate the dot product by increasing the 
+power of the kernel. 
+ Radial Basis function: Gaussian RBF(Radial Basis Function) is another popular Kernel 
+method used in SVM models for more. RBF kernel is a function whose value depends on the 
+distance from the origin or from some point.  
+3.3.3.  SCIKIT LEARN 
+3.3.3.1.  Pre-process 
+Data preprocessing is a process of preparing the raw data and making it suitable for a machine 
+learning model. It is the first and crucial step while creating a machine learning model. When 
+creating a machine learning project, it is not always a case that we come across the clean and 
+formatted data. And while doing any operation with data, it is mandatory to clean it and put in a 
+formatted way. So for this, we use data pre-processing task. 
+A real-world data generally contains noises, missing values, and maybe in an unusable format 
+which cannot be directly used for machine learning models. Data preprocessing is required tasks 
+for cleaning the data and making it suitable for a machine learning model which also increases the 
+accuracy and efficiency of a machine learning model. 
+It involves below steps: 
+o Getting the dataset 
+o Importing libraries 
+o Importing datasets 
+o Finding Missing Data 
+o Finding and treating Outliers 
+o Splitting dataset into training and test set 
+ 
+ 
+20 
+ 
+Get the dataset 
+Plastic degrading protein sequences belonging to the alkB and CYP153 genes were cumulated 
+from databases such as NCBI and UniprotKB. Around nine thousand positive protein sequences 
+and six thousand negative sequences were obtained. For training datasets were divided in the ratio 
+60:40. To create a machine learning model, the first thing we required is a dataset as a machine 
+learning model completely works on data. The collected data for a particular problem in a proper 
+format is known as the dataset. This dataset is in the form of amino acid sequences.  
+ 
+Next we found features from these sequences by taking number of amino acids. Those features 
+are, 
+Importing Libraries 
+In order to perform data preprocessing using Python, we need to import some predefined Python 
+libraries. These libraries are used to perform some specific jobs. There are three specific libraries 
+that we will use for data preprocessing, which are: 
+Numpy: Numpy Python library is used for including any type of mathematical operation in the 
+code. It is the fundamental package for scientific calculation in Python. It also supports to add 
+large, multidimensional arrays and matrices. So, in Python, we can import it as: 
+import numpy as np 
+Here we have used np, which is a short name for Numpy, and it will be used in the whole program. 
+Matplotlib: The second library is matplotlib, which is a Python 2D plotting library, and with this 
+library, we need to import a sub-library pyplot. This library is used to plot any type of charts in 
+Python for the code. It will be imported as below: 
+
+21 
+ 
+  import matplotlib.pyplot as mpt   
+Here we have used mpt as a short name for this library. 
+Pandas: The last library is the Pandas library, which is one of the most famous Python libraries 
+and used for importing and managing the datasets. It is an open-source data manipulation and 
+analysis library.  
+Scikit learn:  Scikit-learn (formerly scikits.learn and also known as sklearn) is a free 
+software machine learning library for the Python programming language. It features 
+various classification, regression and clustering algorithms including support vector 
+machines, random forests, gradient boosting, k-means and DBSCAN, and is designed to 
+interoperate with the Python numerical and scientific libraries NumPy and SciPy. 
+Other libraries are following, 
+ 
+ 
+Combining Positive and Negative datasets: In this steps we combined positives( plastic 
+degradable microbes) and negative (non degradable microbes) sequences. Now we have created 
+dataset with 15000 microbial sequences. 
+
+22 
+ 
+ 
+Handling Missing data: 
+The next step of data preprocessing is to handle missing data in the datasets. If our dataset contains 
+some missing data, then it may create a huge problem for our machine learning model. Hence it is 
+necessary to handle missing values present in the dataset. 
+Ways to handle missing data: 
+There are mainly two ways to handle missing data, which are: 
+By deleting the particular row: The first way is used to commonly deal with null values. In this 
+way, we just delete the specific row or column which consists of null values. But this way is not 
+so efficient and removing data may lead to loss of information which will not give the accurate 
+output. 
+By calculating the mean: In this way, we will calculate the mean of that column or row which 
+contains any missing value and will put it on the place of missing value.  
+Outlier Detection: 
+Outliers are extreme values that deviate from other observations on data , they may indicate a 
+variability in a measurement, experimental errors or a novelty. In other words, an outlier is an 
+observation that diverges from an overall pattern on a sample. 
+Types of outliers: Outliers can be of two kinds: univariate and multivariate. Univariate outliers 
+can be found when looking at a distribution of values in a single feature space. Multivariate outliers 
+can be found in a n-dimensional space (of n-features). Looking at distributions in n-dimensional 
+spaces can be very difficult for the human brain, that is why we need to train a model to do it for 
+us. 
+Outliers can also come in different flavours, depending on the environment: point 
+outliers, contextual outliers, or collective outliers. Point outliers are single data points that lay far 
+from the rest of the distribution. Contextual outliers can be noise in data, such as punctuation 
+symbols when realizing text analysis or background noise signal when doing speech recognition. 
+Collective outliers can be subsets of novelties in data such as a signal that may indicate the discovery 
+of new phenomena. Machine learning algorithms are sensitive to the range and distribution of 
+23 
+ 
+attribute values. Data outliers can spoil and mislead the training process resulting in longer training 
+times, less accurate models and ultimately poorer results. 
+ 
+ 
+ 
+ 
+3.3.3.2    Exploratory Data Analysis 
+Exploratory Data Analysis is one of the important steps in the data analysis process. Here, the 
+focus is on making sense of the data in hand things like formulating the correct questions to ask to 
+your dataset, how to manipulate the data sources to get the required answers, and others. This is 
+done by taking an elaborate look at trends, patterns, and outliers using a visual method. Exploratory 
+Data Analysis is a crucial step before you jump to machine learning or modelling of your data. It 
+provides the context needed to develop an appropriate model and interpret the results correctly. 
+The purpose of Exploratory Data Analysis is essential to tackle specific tasks such as: 
+ Spotting missing and erroneous data; 
+ Mapping and understanding the underlying structure of your data; 
+ Identifying the most important variables in your dataset; 
+ Testing a hypothesis or checking assumptions related to a specific model; 
+ Establishing a parsimonious model one that can explain your data using minimum variables ; 
+ Estimating parameters and figuring the margins of error. 
+ Maximize insight into the database/understand the database structure; 
+ Visualize potential relationships direction and magnitude between exposure and outcome 
+variables; 
+ Detect outliers and anomalies values that are significantly different from the other observations  
+ Develop parsimonious models a predictive or explanatory model that performs with as few 
+exposure variables as possible or preliminary selection of appropriate models; 
+ 
+Central Tendency And Measure Of Spread  
+Here we can find the central tendency like mean, median, mode and measure of spread like range, 
+variance etc using describe(). 
+ 
+24 
+ 
+Amino acid count 
+ 
+ 
+ 
+Dipeptide count 
+ 
+
+25 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Hydrophobicity 
+ 
+ 
+Hydrophilicity 
+
+26 
+ 
+ 
+ 
+Acidity 
+ 
+ 
+ 
+ 
+Basicity 
+ 
+
+27 
+ 
+ 
+Amino acid ratio 
+ 
+ 
+ 
+ 
+Tabular Representation  
+Code: 
+ 
+Output: 
+ 
+Here 0 represents non- biodegradable microbes and 1 represents bio degradable microbes. There 
+are 9000 bio degradable microbes and almost 6000 non- biodegradable microbes present in this 
+data. 
+
+28 
+ 
+ 
+ Skewness 
+Amino acid count 
+ 
+ There is not much skewness exist in amino acid count 
+ 
+ 
+ 
+ 
+ 
+Dipeptide count 
+ 
+
+29 
+ 
+ There is not much skewness exist in dipeptide count 
+ 
+Hydrophobicity 
+ 
+ There is not much skewness exist in Hydrophobicity 
+ 
+Acidity 
+ 
+ There is not much skewness exist in Acidity 
+ 
+ 
+ 
+Hydrophilicity 
+ 
+
+30 
+ 
+ Not much skewness associated with this data 
+Basicity 
+ 
+ There is not much skewness exist in Basicity 
+ 
+Amino acid ratio 
+ 
+ There is no skewness exist in Amino acid ratio 
+ 
+  
+Histogram 
+A histogram is used to summarize discrete or continuous data and also it provides visual 
+interpretation of numerical data by showing the number of data points that fall within a specified 
+range of values (called “bins”). It is similar to a vertical bar graph. However, a histogram, unlike 
+a vertical bar graph, shows no gaps between the bars. 
+Amino acid count 
+ 
+
+31 
+ 
+ 
+Hydrophobicity 
+ 
+Hydrophilic 
+
+32 
+ 
+ 
+Acidity 
+ 
+ 
+ 
+ 
+ 
+
+33 
+ 
+Basicity 
+ 
+ 
+Amino acid ratio 
+ 
+ 
+
+34 
+ 
+ 3.3.3.3  ALGORITHMS 
+A classification algorithm, in general, is a function that weighs the input features so that the output 
+separates one class into positive values and the other into negative values. Classifier training is 
+performed to identify the weights (and functions) that provide the most accurate and best 
+separation of the two classes of data. Linear discriminant analysis is the most basic classifier that 
+identifies the linear weighting of multifactorial data, as a means to maximize the distance between 
+the means of the two classes. 
+In machine learning and statistics, classification is a supervised learning approach in which the 
+computer program learns from the input data and then uses this learning to classify new 
+observations. This data set may simply be bi-class (like identifying whether the person is male or 
+female or that the mail is spam or non-spam) or it may be multi-class. Some practical examples of 
+classification problems are: speech recognition, handwriting recognition, bio metric identification, 
+document classification etc. In machine learning, classification is a supervised learning concept 
+which basically categorizes a set of data into classes. The most common classification problems 
+are – speech recognition, face detection, handwriting recognition, document classification, etc. It 
+can be either a binary classification problem or a multi-class problem too. There are a bunch 
+of machine learning algorithms for classification in machine learning.  
+ 
+Model 1: DECISION TREE 
+ 
+     Definition 
+Decision tree (DT) classifier uses a tree-like graph similar to a flowchart where node denotes a test  
+on a  particular attribute  and the  branch denotes an outcome of  the test whereas the class labels 
+are represented by the leaves .A Decision Tree (DT) considers all possible tests that can split the 
+data and chooses the one that gives highest information gain.  
+   Assumptions 
+1. In the beginning, the whole training set is considered as the root. 
+2. Feature values are preferred to be categorical. If the values are continuous then they are 
+   discretized prior to building the model. 
+3.Records are distributed recursively on the basis of attribute values. 
+ 
+Algorithm 
+1. Begin the tree with the root node, says S, which contains the complete dataset. 
+2. Find the best attribute in the dataset using Attribute Selection Measure (ASM). 
+3. Divide the S into subsets that contains possible values for the best attributes. 
+35 
+ 
+4. Generate the decision tree node, which contains the best attribute. 
+5. Excursively make new decision trees using the subsets of the dataset created in step -3. Continue 
+this process until a stage is reached where you cannot further classify the nodes and called the final 
+node as a leaf node. 
+ 
+Model 2– RANDOM FOREST 
+ Definition 
+Random Forest (RF) was introduced by  Breiman  in  2001.  RF is  basically  a combination  of  
+two  methods:  random  space  method  and bagging  decision  trees.  RF classifier contains multiple 
+DTs which are trained according to the bagging method. The final classification result is obtained 
+after getting the result of all DTs and voting on the result of  all  DTs.   
+Assumptions  
+1. No formal distributional assumptions,  
+2. Random forests are non-parametric and can thus handle skewed and multi-modal data as well     
+as categorical data that are ordinal or non-ordinal. 
+Algorithm 
+1. First, start with the selection of random samples from a given dataset. 
+2. Next, this algorithm will construct a decision tree for every sample. Then it will get the 
+prediction result from every decision tree. 
+3. In this step, voting will be performed for every predicted result. 
+4. At last, select the most voted prediction result as the final prediction result. 
+ 
+Model 3- KNN ALGORITHM 
+Definition 
+The K-nearest neighbors (KNN) algorithm is a type of supervised machine learning algorithms. 
+KNN is extremely easy to implement in its most basic form, and yet performs quite complex 
+classification tasks. It is a lazy learning algorithm since it doesn't have a specialized training phase. 
+Rather, it uses all of the data for training while classifying a new data point or instance. KNN is a 
+non-parametric learning algorithm, which means that it doesn't assume anything about the 
+underlying data. This is an extremely useful feature since most of the real world data doesn't really 
+follow any theoretical assumption e.g. linear- separability, uniform distribution, etc. 
+ 
+ 
+36  
+Assumptions 1.  More exactly, the data points are in a metric space.  2. The data can be scalars or possibly even multidimensional vectors. Since the points are in feature space, they have a notion of distance – This need not necessarily be Euclidean distance although it is the one commonly used Algorithm   Model 4-SUPPORT VECTOR MACHINE: Definition: Support Vector Machine (SVM) is a supervised machine learning algorithm capable of performing classification, regression and even outlier detection. The linear SVM classifier works by drawing a straight line between two classes. All the data points that fall on one side of the line will be labeled as one class and all the points that fall on the other side will be labeled as the second. The “support vector” in “support vector machine” refers to two position vectors drawn from the origin to the points which dictate the decision boundary. Support Vectors are simply the co-ordinates of individual observation. The SVM classifier is a frontier which best segregates the two classes (hyper-plane/ line). Assumption Of The Model:  The margin should be as large as possible.  The support vectors are the most useful data points because they are the ones most likely to be incorrectly classified.  High stability due to dependency on support vectors and does not get influenced by Outliers.    
+
+37 
+ 
+ 
+Algorithm: 
+In the SVM algorithm, each data item as a point in n-dimensional space (where n is number of 
+features) with the value of each feature being the value of a particular coordinate. Then, we perform 
+classification by finding the hyper-plane that differentiates the two classes very well. If it’s a 
+positive sample, we’re going to insist that the proceeding decision function (the dot product 
+of w and the position vector of a given sample plus some constant) returns a value greater than or 
+equal to 1. Similarly, if it’s a negative sample, we’re going to insist that the proceeding decision 
+function returns a value smaller than or equal to -1. In other words, we won’t consider any samples 
+located between the decision boundary and support vectors. 
+ 
+ 
+3.4 PERFORMANCE AND EVALUATION 
+ 
+3.4.1. Accuracy is the ratio of number of correct predictions to the total number of input samples. 
+ACCURACY = NO OF CORRECT PREDICTIONS 
+                            TOTAL NO OF PREDICTIONS 
+ 
+3.4.2. Confusion Matrix gives us matrix as output and describes the complete performance of the 
+model. 
+True Positives: The cases in which we predicted YES and the actual output was also YES.  
+True Negatives: The cases in which we predicted NO and the actual output was NO. 
+False Positives: The cases in which we predicted YES and the actual output was NO. 
+False Negatives: The cases in which we predicted NO and the actual output was YES. 
+3.4.3. Area Under Curve (AUC) is one of the most widely used metrics for evaluation. It is used 
+for binary classification problem. AUC of a classifier is equal to the probability that the classifier 
+will rank a randomly chosen positive example higher than a randomly chosen negative example. 
+Before defining AUC, let us understand two basic terms: 
+True Positive Rate is defined as TP/ (FN+TP). True Positive Rate corresponds to the proportion of 
+positive data points that are correctly considered as positive, with respect to all positive data points.  
+38 
+ 
+True Negative Rate is defined as TN / (FP+TN). False Positive Rate corresponds to the proportion 
+of negative data points that are correctly considered as negative, with respect to all the negative data 
+points.  
+False Positive Rate is defined as FP / (FP+TN). False Positive Rate corresponds to the proportion 
+of negative data points that are mistakenly considered as positive, with respect to all negative data 
+points 
+3.4.4. F1 Score is the Harmonic Mean between precision and recall. The range for F1 Score is [0, 
+1]. It tells you how precise your classifier is (how many instances it classifies correctly), as well as 
+how robust it is (it does not miss a significant number of instances). 
+3.4.5. Precision: It is the number of correct positive results divided by the number of positive results 
+predicted by the classifier. 
+PRECISION =               TRUE POSITIVES 
+                            TRUE POSITIVES+FALSE POSITIVES 
+3.4.6. Recall: It is the number of correct positive results divided by the number of all relevant 
+samples (all samples that should have been identified as positive). 
+ 
+RECALL =                TRUE POSITIVES 
+                            TRUE POSITVES + FALSE NEGATIVE 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+39 
+ 
+3.5. WORK FLOW 
+ 
+                                          Figure. Work flow diagram 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+
+40 
+ 
+CHAPTER 4 
+ RESULT 
+4.1. Weka 
+4.1.1. Preprocessing 
+Using python environment we have created .arff file. Then we created train and test files. 
+ 
+Figure 1. Arff file format 
+4.1.2. Algorithms 
+1)AMINO ACIDS 
+ 
+   Table 1. All results for Amino acid count 
+
+41 
+ 
+MLP 
+ 
+                             Figure 2. ROC curve for MLP 
+SMO 
+ 
+                                 Figure 3. ROC curve for SMO 
+J48 
+ 
+                   Figure 4. ROC curve for j48 
+
+42 
+ 
+IBK 
+ 
+                        Figure 5. ROC curve for IBK 
+Here all the classifiers (SMO,MLP,J48,IBK) with accuracy is 1.so it indicates, it is showing good 
+accuracy 
+ 
+2) AMINOACID RATIO 
+ 
+                          Table 2. Results of algorithms 
+ 
+ 
+ 
+
+43 
+ 
+MLP 
+ 
+                        Figure 6. ROC curve for MLP 
+SMO  
+ 
+                        Figure 7. ROC curve for SMO 
+J48 
+ 
+                        Figure 8. ROC curve for J48 
+
+44 
+ 
+IBK 
+ 
+                        Figure 9. ROC curve for IBK 
+ 
+ For this feature amino acid ratio with j48 and ibk is giving the best accuracy. 
+ 
+3) DIPEPTIDE COUNT 
+ 
+                          Table 3. Results of algorithms 
+ 
+ 
+ 
+
+45 
+ 
+SMO 
+ 
+Figure 10. ROC curve for SMO 
+J48 
+ 
+Figure 11. ROC curve for J48 
+IBK 
+ 
+                                Figure 12. ROC curve for IBK 
+ 
+
+46 
+ 
+4) HYDROPHOBICITY 
+ 
+  Table 4. All results for Hydrophobicity 
+MLP 
+ 
+                                Figure 13. ROC curve for MLP 
+ 
+SMO 
+ 
+                                Figure 14. ROC curve for SMO 
+
+47 
+ 
+J48 
+ 
+                                Figure 15. ROC curve for J48 
+IBK 
+ 
+                                Figure 16. ROC curve for IBK 
+5) HYDROPHILIC 
+ 
+   Table 5. All results for Hydrophilicity 
+
+48 
+ 
+MLP 
+ 
+Figure 17. ROC curve for MLP 
+SMO 
+ 
+Figure 18. ROC curve for SMO 
+J48  
+ 
+Figure 19. ROC curve for J48 
+ 
+ 
+
+49 
+ 
+IBK 
+ 
+     Figure 20. ROC curve for IBK 
+6) ACIDICITY 
+ 
+   Table 7. All results for Acidity 
+MLP 
+ 
+     Figure 21. ROC curve for MLP 
+
+50 
+ 
+ 
+SMO 
+ 
+     Figure 22. ROC curve for SMO 
+J48 
+ 
+     Figure 23. ROC curve for J48 
+IBK 
+ 
+     Figure 24. ROC curve for IBK 
+
+51 
+ 
+7) BASICITY 
+ 
+Table 7. All results for Basicity 
+MLP 
+ 
+Figure 25. ROC curve for MLP 
+SMO 
+ 
+   Figure 26. ROC curve for SMO 
+
+52 
+ 
+J48 
+ 
+   Figure 27. ROC curve for J48 
+IBK 
+ 
+   Figure 28. ROC curve for IBK 
+ 
+4.2. SVM light 
+4.2.1. Preprocessing 
+Using python environment we have created .txt file in the required format for svm lite. Then we 
+split the dataset into train and test. 
+ 
+ 
+
+53 
+ 
+4.2.2. Kernels 
+1) AMINO ACIDS 
+ 
+ 
+   Table 8. SVM lite results for amino acid count 
+2)ACIDITY 
+ 
+   Table 9. SVM lite results for acidity 
+3)BASISITY 
+ 
+   Table 10. SVM lite results for basicity 
+ 
+
+54 
+ 
+ 
+4)AMINO ACID RATIO 
+ 
+   Table 11. SVM lite results for amino acid ratio 
+6)dipeptide count 
+ 
+   Table 12. SVM lite results for Dipeptide count 
+ 
+6)HYDROPHOBIC 
+ 
+   Table 13. SVM lite results for Hydrophobicity 
+ 
+
+55 
+ 
+7)HYDROPHILIC 
+ 
+   Table 14. SVM lite results for Hydrophilicity 
+From all these tables we found that amino acid count is the best feature among all the features. 
+Amino acid count is the best feature in order to predict plastic degradable microbes. We reached 
+this conclusion from performance of different Kernels (Linear, Polynomial, RBF) 
+ 
+4.3.  SCIKIT LEARN(PYTHON) 
+4.3.1. Preprocessing 
+ Getting dataset 
+ Amino acid count 
+ 
+Output: 
+ 
+
+56 
+ 
+ Amino acid ratio 
+ 
+Output: 
+ 
+ Dipeptide count 
+ 
+Output: 
+
+57 
+ 
+ 
+There are 400 columns for this feature  
+ Acidity 
+ 
+Output: 
+ 
+ Basicity 
+ 
+Output: 
+
+58 
+ 
+ 
+ Hydrophilic 
+ 
+Output: 
+ 
+ Hydrophobicity 
+ 
+ 
+
+59 
+ 
+Output: 
+ 
+ 
+ Combining positive and negative 
+Amino acid count 
+ 
+ 
+     
+Amino acid ratio 
+ 
+
+60 
+ 
+ 
+Dipeptide Count 
+ 
+Acidicity 
+ 
+ 
+Basicity 
+ 
+ 
+Hydrophobicity 
+
+61 
+ 
+ 
+ 
+Hydrophilicity 
+ 
+ 
+ Detecting null values 
+Amino acid count: 
+ 
+We can see that these is no missing values for Amino acid count 
+
+62 
+ 
+Amino acid ratio: 
+ 
+There is no missing values for Amino acid ratio 
+Dipeptide count: 
+ 
+There is no missing values for Dipeptide count 
+Acidity: 
+ 
+We can see that there is no missing values for Acidity 
+
+63 
+ 
+Basicity: 
+ 
+There is no missing values for Basicity 
+Hydrophobicity: 
+ 
+There is no missing values for Hydrophobicity feature 
+Hydrophilicity: 
+ 
+There is no missing values for Hydrophilic feature 
+ 
+
+64 
+ 
+ Outlier detection  
+Amino acid count: 
+ 
+ This is the boxplot to detect the outliers 
+ Here we cannot fix the amount of amino acids in a microbial sequence so there is no point of 
+treating the outliers here. 
+Amino acid ratio: 
+ 
+ There are some outliers 
+Dipeptide Count: 
+ 
+
+65 
+ 
+ It is a box plot to detect the outliers 
+ Here the boxplot of 400 features involved 
+ There are 400 dipeptide formed from the 20 amino acids 
+Acidity: 
+ 
+ This is boxplot to find outliers 
+ We can see that, there are some outliers present in this feature 
+Basicity: 
+ 
+ There are outliers 
+Hydrophobicity: 
+ 
+
+66 
+ 
+ There are 9 amino acids with hydrophobic property 
+ There are outliers in this feature 
+Hydrophilicity 
+ 
+ There are 6 amino acids with hydrophilic property 
+ There are outliers present in this feature 
+ 
+4.3.2. Algorithms 
+Amino acid count: 
+ 
+Decision tree 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+
+67 
+ 
+Support vector machine: 
+ 
+ 
+ Knn: 
+  
+Random forest 
+ 
+
+68 
+ 
+ 
+   Table 15. Accuracy table of different algorithms for amino acid in sklearn 
+From above table we can identify that Random forest gave best accuracy of 99.13 and the KNN 
+classifier gave second highest accuracy. 
+ 
+Dipeptide count 
+ 
+ 
+Support vector machine: 
+ 
+
+69 
+ 
+Decision tree: 
+ 
+Knn: 
+ 
+ 
+ 
+ 
+  Table 16. Accuracy table of different algorithms for dipeptide in sklearn 
+ 
+ 
+
+70 
+ 
+Above table shows the results of all algorithms for dipeptide feature. All  four algorithms gave less 
+accuracy compared to other features. And among these SVM give better accuracy. 
+ 
+Hydrophobic 
+Randomforest: 
+ 
+ 
+Decision tree: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+71 
+ 
+ 
+Support vector machine: 
+ 
+Knn: 
+ 
+ 
+                Table 17. Accuracy table of different algorithms for Hydrophobicity in sklearn 
+ 
+
+72 
+ 
+Random forest gave best accuracy of 98.43 and second highest accuracy is for KNN which gives 
+an accuracy of 98.26. Other classifiers also gave good accuracy 
+ 
+Hydrophilicity 
+Randomforest 
+ 
+Decision tree 
+ 
+Support vector machine: 
+ 
+
+73 
+ 
+Knn 
+ 
+ 
+ 
+ 
+                Table 18. Accuracy table of different algorithms for Hydrophilicity in sklearn 
+ 
+Above table shows the accuracy of all algorithms for Hydrophilic property of microbial sequence. 
+From this we can identify that Random forest has best accuracy of 93.77 and second highest is 
+KNN. 
+Acidity 
+Random forest 
+ 
+
+74 
+ 
+Decision tree 
+ 
+Support vector machine: 
+ 
+Knn 
+ 
+
+75 
+ 
+ 
+      Table 19. Accuracy table of different algorithms for acidic in sklearn 
+All algorithms gave almost same accuracy. But Random forest gives highest accuracy of 89.2 
+.Decision tree gives second highest accuracy   
+ 
+Basicity 
+Svm: 
+ 
+Knn: 
+ 
+
+76 
+ 
+Randomforest: 
+ 
+Decision tree 
+ 
+ 
+  Table 20. Accuracy table of different algorithms for basicity in sklearn 
+ 
+From the above table we can conclude that SVM has low accuracy of 59.9 compared to others and 
+Random forest gives best accuracy of 84.86 . 
+ 
+
+77 
+ 
+ 
+Amino acid ratio 
+Random forest 
+ 
+Decision tree 
+ 
+Support vector machine: 
+ 
+
+78 
+ 
+KNN: 
+ 
+ 
+ 
+ Table 21. Accuracy table of different algorithms for amino acid ratio in sklearn 
+Above table shows the results for all algorithms for amino acid feature. From that we can identify 
+that KNN gives best accuracy of  99.2 and second highest is Random forest. decision tree gives 
+98.3 and Support vector machine gives 97.5. All the algorithms gave good accuracy for this amino 
+acid ratio feature. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+79 
+ 
+4.4 STREAMLIT 
+    
+                                Fig 29. Plastic degrading prediction app 
+    Fig 30. User inputting Microbial sequence 
+
+80 
+ 
+    Fig 31. Count of amino acid calculated 
+                                 Fig 32. Prediction of plastic degrading microbes 
+ 
+Using this Plastic degrading microbe detection app, the user will be able predict the classes of 
+the microbes(degrades or non-degrades) by using microbial sequence. 
+ 
+ 
+
+81 
+ 
+Chapter 5 
+       CONCLUSION  
+5.1 SUMMARY 
+ From the Weka results we can conclude that amino count is the top features that were accurately 
+trained by the machine for both the independent and cross validation test, amongst the 7 features 
+that were trained. 
+ From the SVM-lite results, for all the 3 kernels it can be concluded that amino acid count is most 
+accurate amongst the other   features, which were trained in the same manner. 
+ we can conclude that amino count is one of the best features out of the 7 which are precisely 
+more accurate when compared to the rest. Most accurate one is amino acid count as it has almost 
+the highest accuracy amongst the 4 algorithms applied. 
+ Amino acid count giving the best accuracy.so among the 7 features we selected amino acid count 
+as the best feature in order to predict the plastic degrading microbes. we use streamlit to implement 
+the model. The random forest classifier is used to implement prediction model. 
+ Using this Plastic degrading microbe detection app, the user will be able predict the classes of the 
+microbes(degrades or non-degrades) by using microbial sequence. 
+ 
+5.2 LIMITATIONS 
+We are able to predict the plastic degradable microbes only when the microbial sequence will be 
+given to us. For the detection of microbial sequence , we need laboratory facilities.  
+ 
+5.3 FUTURE SCOPE  
+This project helps to create the plastic degradable microbes based on the amino acid present in it 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+82 
+ 
+REFERENCES      
+[1] Lear, G., Kingsbury, J. M., Franchini, S., Gambarini, V., Maday, S. D. M., Wallbank, J. A., & 
+Pantos, O. (2021). Plastics and the microbiome: impacts and solutions. Environmental 
+Microbiome, 16(1), 1-19. 
+[2] Devi, Rajendran Sangeetha, Velu Rajesh Kannan, Krishnan Natarajan, Duraisamy Nivas, 
+Kanthaiah Kannan, Sekar Chandru, and Arokiaswamy Robert Antony. "The role of microbes in 
+plastic degradation." Environ. Waste Manage 341 (2016). 
+[3] Iram, Darakhshanda, Rafia Riaz, and Rana K. Iqbal. "Usage of potential micro-organisms for 
+degradation of plastics." Open Journal of Environmental Biology 4, no. 1 (2019): 007-015. 
+[4] Bakht, Afreen, Nouman Rasool, and Saima Iftikhar. "Characterization of plastic degrading bacteria 
+isolated from landfill sites." (2020). 
+[5] Xu, Junyu, Ziheng Cui, Kaili Nie, Hao Cao, Min Jiang, Haijun Xu, Tianwei Tan, and Luo Liu. "A 
+quantum mechanism study of the cc bond cleavage to predict the bio-catalytic polyethylene 
+degradation." Frontiers in microbiology 10 (2019): 489. 
+[6] Chan, Allison. "The Future of Bacteria Cleaning Our Plastic Waste." Berkeley Scientific Journal 21, 
+no. 1 (2016). 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

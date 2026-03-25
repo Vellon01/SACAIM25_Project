@@ -1,0 +1,11 @@
+flowchart LR
+    Raw[(gold_final.csv)] --> PreProc[Data Preprocessing<br>& Splitting]
+    
+    PreProc --> BranchA[Branch 1: SARIMA<br>Time Series Generation]
+    PreProc --> BranchB[Branch 2: SVM<br>6-Month Windowed Features]
+    
+    BranchA --> EvalA{Evaluate vs Test Set}
+    BranchB --> EvalB{Evaluate vs Test Set}
+    
+    EvalA --> ExportA[Exported Output:<br>sarima_model.pkl]
+    EvalB --> ExportB[Exported Output:<br>svm_linear_model.pkl]
